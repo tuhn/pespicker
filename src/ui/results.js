@@ -1,0 +1,184 @@
+// Match screen: two cards facing each other across VS, comparison bars, gap, and the result
+// controls (lock per side, swap, redraw, copy, share, history). The draw animation plays on
+// this same layout, so "Skip" simply jumps to its final state.
+//
+// Two variants share the compare/dock builders:
+// - renderMatch   (2D): DOM cards, animated by ui/fallback2d.js
+// - renderMatch3D (3D): empty card/VS anchors that the WebGL scene fills; DOM keeps crisp text
+//   (player, team, rating) and the lock buttons next to each 3D card.
+import { h, ICONS } from './dom.js';
+import { S } from './strings.js';
+import { teamCard, decorateLockButtons, starsEl, tierClass } from './card.js';
+import { ovrGap, canRedraw } from '../draw/draw.js';
+
+const STATS = ['att', 'mid', 'def', 'ovr'];
+
+function buildCompare(entries, names, notice, pending) {
+  // Only stats both teams have (Elo-mapped teams have OVR only).
+  const shown = STATS.filter((k) => entries[0].rating?.[k] != null && entries[1].rating?.[k] != null);
+  const bars = [];
+  const rows = shown.map((k) => {
+    const a = entries[0].rating[k];
+    const b = entries[1].rating[k];
+    const w = (v) => `${Math.max(8, Math.min(100, ((v - 50) / 45) * 100)).toFixed(0)}%`;
+    const ia = h('i', { class: a > b ? 'win' : '', style: { '--w': w(a) } });
+    const ib = h('i', { class: b > a ? 'win' : '', style: { '--w': w(b) } });
+    bars.push(ia, ib);
+    return h('div', { class: 'cmp', role: 'row', 'aria-label': `${S.stats[k]}: ${a} vs ${b}` },
+      h('span', { class: `v num ${a > b ? 'win' : ''}` }, a),
+      h('div', { class: 'bar l' }, ia),
+      h('span', { class: 'lbl' }, S.stats[k]),
+      h('div', { class: 'bar' }, ib),
+      h('span', { class: `v num ${b > a ? 'win' : ''}` }, b));
+  });
+  const gap = ovrGap(entries[0], entries[1]);
+  const gapLine = h('div', { class: `gapline ${pending}`, 'aria-label': gap == null ? S.gapUnknown : S.gap(gap) },
+    gap == null ? S.gapUnknown : [`${S.gapPrefix} `, h('span', { class: 'num' }, gap), ` ${S.gapUnit}`]);
+  const noticeEl = notice && S.notices[notice.code] ? h('div', { class: `notice ${pending}`, role: 'status' }, S.notices[notice.code](notice)) : null;
+  const table = h('div', { class: 'cmp-table', role: 'table', 'aria-label': 'Comparison' }, rows);
+  return { table, bars, gapLine, noticeEl, names: h('div', { class: 'cmp-names' }, h('span', null, names[0]), h('span', null, names[1])) };
+}
+
+function buildDock(ctx, locked) {
+  const { animating, actions } = ctx;
+  if (animating) {
+    return h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
+      h('button', { type: 'button', class: 'btn', id: 'skip-btn', onclick: (e) => { e.stopPropagation(); actions.skip(); } }, S.skip)));
+  }
+  const redrawDisabled = !canRedraw(locked);
+  const iconBtn = (icon, label, onclick, aria) => {
+    const b = h('button', { type: 'button', class: 'btn', onclick, 'aria-label': aria || null, html: icon });
+    if (label) b.append(label);
+    return b;
+  };
+  return h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
+    h('div', { class: 'row' },
+      iconBtn(ICONS.swap, S.swap, actions.swap, S.swapAria),
+      iconBtn(ICONS.copy, S.copy, actions.copy),
+      ctx.canShare ? iconBtn(ICONS.share, S.share, actions.share) : null,
+      iconBtn(ICONS.history, null, actions.openHistory, S.history)),
+    h('button', { type: 'button', class: 'btn-primary', id: 'redraw-btn', onclick: actions.redraw, disabled: redrawDisabled, 'aria-describedby': redrawDisabled ? 'redraw-why' : null },
+      redrawDisabled ? S.redrawLockedBoth : S.redraw),
+    redrawDisabled ? h('span', { id: 'redraw-why', class: 'sr-only' }, S.errors['both-locked']) : null));
+}
+
+function topBar(state, actions) {
+  const back = h('button', { type: 'button', class: 'btn-ghost', onclick: actions.back, 'aria-label': S.backAria, html: ICONS.back });
+  back.append(S.back);
+  return h('div', { class: 'match-top' }, back, h('div', { class: 'meta' }, `${S.modes[state.mode]} · ${S.balanceLabel(state.balance)}`));
+}
+
+const speedHandler = (ctx) => (ctx.animating ? (e) => { if (!e.target.closest('button')) ctx.actions.speedUp(); } : null);
+
+/**
+ * 2D variant. ctx: { state, entries, names, animating, animateSides, canShare, actions }
+ * Returns { el, anim } where anim holds the nodes the 2D sequence animates.
+ */
+export function renderMatch(ctx) {
+  const { state, entries, names, animating, actions } = ctx;
+  const { locked, notice } = state.result;
+  const pending = animating ? 'pending' : '';
+
+  const slots = [];
+  const flips = [];
+  for (const i of [0, 1]) {
+    const card = teamCard(entries[i], i, { name: names[i], locked: locked[i], onLock: animating ? null : () => actions.lock(i) });
+    const flip = h('div', { class: 'flip' }, card, h('div', { class: 'card-back', 'aria-hidden': 'true' }));
+    flips.push(flip);
+    slots.push(h('div', { class: `card-slot ${animating && ctx.animateSides[i] ? 'pending' : ''}` }, flip));
+  }
+  const cmp = buildCompare(entries, names, notice, pending);
+  const vs = h('div', { class: 'vs', 'aria-hidden': 'true' }, S.vs);
+  const clash = h('section', { class: `clash ${pending}`, 'aria-label': S.vs }, vs, cmp.names, cmp.table, cmp.gapLine, cmp.noticeEl);
+
+  const el = h('main', { class: 'screen match', onpointerdown: speedHandler(ctx) },
+    topBar(state, actions),
+    h('div', { class: 'stage' }, slots[0], clash, slots[1]),
+    h('div', { class: 'hint', 'aria-hidden': 'true' }, animating ? S.tapToSpeed : ''),
+    buildDock(ctx, locked));
+  decorateLockButtons(el);
+  return { el, anim: { flips, slots, vs, clash, bars: cmp.bars, reveal: [cmp.gapLine, cmp.noticeEl].filter(Boolean) } };
+}
+
+/**
+ * 3D variant. Same ctx, plus interaction callbacks in actions: tilt(i, nx, ny), release(i), zoom(i).
+ * Returns { el, anchors: { cards: [el, el], vs: el }, reveal: { sides: [el, el], bars, rest: [] } }.
+ */
+export function renderMatch3D(ctx) {
+  const { state, entries, names, animating, actions } = ctx;
+  const { locked, notice } = state.result;
+  const pending = animating ? 'pending' : '';
+  const anchors = [];
+  const infos = [];
+  const halves = [0, 1].map((i) => {
+    const e = entries[i];
+    const anchor = h('button', {
+      type: 'button', class: 'card-anchor',
+      'aria-label': `${names[i]}: ${e.team.name}. ${S.inspect}`,
+    });
+    attachTilt(anchor, i, actions, animating);
+    anchors.push(anchor);
+    const sub = e.team.type === 'club' ? [e.team.league, e.team.country].filter(Boolean).join(' · ') : e.team.region;
+    const lockBtn = animating ? null : h('button', {
+      class: 'lock-btn', type: 'button', 'aria-pressed': String(locked[i]),
+      'aria-label': locked[i] ? S.unlockAria(names[i], e.team.name) : S.lockAria(names[i], e.team.name),
+      onclick: () => actions.lock(i), html: locked[i] ? ICONS.lock : ICONS.unlock,
+    });
+    // Hidden for the whole sequence (also a locked side): during the clash both cards cross the screen.
+    const info = h('div', { class: `side-info p${i + 1} ${tierClass(e.stars)} ${pending}` },
+      h('span', { class: 'pname' }, names[i]),
+      h('h2', { class: 'tname' }, e.team.name),
+      sub ? h('div', { class: 'tsub' }, sub) : null,
+      h('div', { class: 'side-rating' },
+        h('span', { class: 'ovr-inline num' }, `${S.stats.ovr} ${e.ovr ?? '—'}`, e.rating?.estimated ? h('span', { class: 'est', title: S.estTitle }, ` ${S.est}`) : null),
+        starsEl(e.stars)),
+      lockBtn);
+    infos.push(info);
+    return h('section', { class: `half h${i + 1}`, 'aria-label': names[i] }, i === 0 ? [anchor, info] : [info, anchor]);
+  });
+  const cmp = buildCompare(entries, names, notice, pending);
+  const vsAnchor = h('div', { class: 'vs-anchor', 'aria-hidden': 'true' });
+  const center = h('section', { class: `clash3d`, 'aria-label': S.vs },
+    vsAnchor,
+    h('div', { class: `cmp-wrap ${pending}` }, cmp.names, cmp.table),
+    cmp.gapLine, cmp.noticeEl);
+
+  const el = h('main', { class: 'screen match match3d', onpointerdown: speedHandler(ctx) },
+    topBar(state, actions),
+    h('div', { class: 'stage3d' }, halves[0], center, halves[1]),
+    h('div', { class: 'hint', 'aria-hidden': 'true' }, animating ? S.tapToSpeed : S.inspectHint),
+    buildDock(ctx, locked));
+  decorateLockButtons(el);
+  return {
+    el,
+    anchors: { cards: anchors, vs: vsAnchor },
+    reveal: { sides: infos, cmp: center.querySelector('.cmp-wrap'), bars: cmp.bars, rest: [cmp.gapLine, cmp.noticeEl].filter(Boolean) },
+  };
+}
+
+/** One-finger drag tilts the 3D card; a tap (little movement) zooms it. */
+function attachTilt(anchor, i, actions, animating) {
+  let start = null;
+  anchor.addEventListener('pointerdown', (e) => {
+    if (animating) return;
+    start = { x: e.clientX, y: e.clientY, moved: false };
+    anchor.setPointerCapture?.(e.pointerId);
+  });
+  anchor.addEventListener('pointermove', (e) => {
+    if (!start) return;
+    const dx = e.clientX - start.x, dy = e.clientY - start.y;
+    if (Math.hypot(dx, dy) > 8) start.moved = true;
+    if (start.moved) actions.tilt(i, dx / 120, dy / 120);
+  });
+  const end = () => {
+    if (!start) return;
+    const tap = !start.moved;
+    start = null;
+    actions.release(i);
+    if (tap) actions.zoom(i);
+  };
+  anchor.addEventListener('pointerup', end);
+  anchor.addEventListener('pointercancel', () => { start = null; actions.release(i); });
+  anchor.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); actions.zoom(i); } });
+  anchor.addEventListener('click', (e) => e.preventDefault());
+}
