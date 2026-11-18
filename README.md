@@ -218,9 +218,10 @@ Dashboard → **Workers & Pages** → **pespicker** → tab **Deployments** → 
 
 ```bash
 npm run check:pwa
+npm run check:pwa -- --url https://pespicker.tuhoang.app/
 ```
 
-kiểm tra bản `dist` cục bộ. Với bản live: mở `https://pespicker.tuhoang.app` trên điện thoại, thấy nút **Install app** (Android) hoặc dùng Share → Add to Home Screen (iOS).
+Lệnh đầu kiểm tra bản `dist` cục bộ, lệnh sau kiểm tra bản live (cài được, service worker, mở offline, bốc offline). Với bản live: mở `https://pespicker.tuhoang.app` trên điện thoại, thấy nút **Install app** (Android) hoặc dùng Share → Add to Home Screen (iOS).
 
 ## 6. Cấu hình (`src/config.js`)
 
@@ -268,6 +269,7 @@ Tổng màn Draw (boot + 2 card + clash) mặc định khoảng 5.9s, nằm tron
 - **`pages project create` báo "Missing entry-point to Worker script"**: thêm `--force` (xem mục 5).
 - **Domain trả lỗi 522 hoặc chưa có SSL**: domain còn *Initializing* trong tab Custom domains, chờ chuyển Active. Nếu lâu, kiểm tra bản ghi CNAME `pespicker` trong DNS của `tuhoang.app` vẫn trỏ `pespicker.pages.dev` và đang Proxied.
 - **Đã cài app nhưng không thấy bản mới**: đóng hẳn app rồi mở lại khi có mạng (service worker lấy `index.html` mới từ mạng trước).
+  Trên `pespicker.tuhoang.app`, cài đặt *Browser Cache TTL* của zone `tuhoang.app` có thể ghi đè `Cache-Control` của `sw.js` thành `max-age=14400`. Không ảnh hưởng cập nhật: trình duyệt luôn bỏ qua HTTP cache khi kiểm tra bản mới của service worker.
 
 ## 8. Lệnh npm
 

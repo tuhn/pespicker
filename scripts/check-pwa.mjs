@@ -3,6 +3,7 @@
 //  2. wait for the service worker to control the page,
 //  3. go offline and reload: the app must still render.
 //   npm run build && npm run check:pwa
+//   npm run check:pwa -- --url https://pespicker.tuhoang.app/
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,7 +21,9 @@ const server = http.createServer((req, res) => {
   res.end(fs.readFileSync(file));
 }).listen(0, '127.0.0.1');
 await new Promise((r) => server.once('listening', r));
-const url = `http://localhost:${server.address().port}/`;
+// --url https://... checks a deployed site instead of the local dist/.
+const argUrl = process.argv.includes('--url') ? process.argv[process.argv.indexOf('--url') + 1] : null;
+const url = argUrl || `http://localhost:${server.address().port}/`;
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });

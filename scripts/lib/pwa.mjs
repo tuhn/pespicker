@@ -86,8 +86,11 @@ export async function buildPwaFiles(html) {
   const hash = crypto.createHash('sha256');
   hash.update(html);
   for (const k of Object.keys(files).sort()) hash.update(files[k]);
+  hash.update(swSource('', [])); // service worker logic changes also bump the cache
   const version = hash.digest('hex').slice(0, 12);
-  const precache = ['./', 'index.html', 'manifest.webmanifest', ...Object.keys(files).filter((k) => k.startsWith('icons/'))];
+  // The page is cached under './' only: Cloudflare Pages answers /index.html with a 308 to /, and a
+  // redirected response cannot be used to answer a navigation (offline start would fail).
+  const precache = ['./', 'manifest.webmanifest', ...Object.keys(files).filter((k) => k.startsWith('icons/'))];
   files['sw.js'] = swSource(version, precache);
   files['_headers'] = [
     '/sw.js',
@@ -118,16 +121,22 @@ self.addEventListener('activate', (e) => {
     .then(() => self.clients.claim()));
 });
 
+// A response that went through a redirect cannot answer a navigation; rebuild it as a plain one.
+async function clean(res) {
+  if (!res || !res.redirected) return res;
+  return new Response(await res.blob(), { status: res.status, statusText: res.statusText, headers: res.headers });
+}
+
 // Page: network first (a new deploy shows up as soon as the phone is online), cache when offline.
 // Icons / manifest: cache first.
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).then((res) => {
-      if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put('index.html', copy)); }
+    e.respondWith(fetch(req).then(async (res) => {
+      if (res.ok) { const copy = await clean(res.clone()); caches.open(CACHE).then((c) => c.put('./', copy)); }
       return res;
-    }).catch(() => caches.match('index.html').then((r) => r || caches.match('./'))));
+    }).catch(() => caches.match('./').then(clean)));
     return;
   }
   e.respondWith(caches.match(req).then((hit) => hit || fetch(req)));
