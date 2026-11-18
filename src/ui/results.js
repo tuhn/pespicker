@@ -8,7 +8,7 @@
 //   (player, team, rating) and the lock buttons next to each 3D card.
 import { h, ICONS } from './dom.js';
 import { S } from './strings.js';
-import { teamCard, decorateLockButtons, starsEl, tierClass } from './card.js';
+import { teamCard, decorateLockButtons } from './card.js';
 import { ovrGap, canRedraw } from '../draw/draw.js';
 
 const STATS = ['att', 'mid', 'def', 'ovr'];
@@ -101,58 +101,52 @@ export function renderMatch(ctx) {
 }
 
 /**
- * 3D variant. Same ctx, plus interaction callbacks in actions: tilt(i, nx, ny), release(i), zoom(i).
- * Returns { el, anchors: { cards: [el, el], vs: el }, reveal: { sides: [el, el], bars, rest: [] } }.
+ * 3D variant: the two 3D cards stand side by side across the VS badge (P1 left, P2 right), so the
+ * left/right columns of the comparison below map straight onto the cards. The DOM only adds what
+ * the cards cannot: a lock button under each card, the comparison, the gap line and the controls.
+ * Returns { el, anchors: { cards: [el, el], vs: el }, reveal: { sides: [el, el], cmp, bars, rest } }.
  */
 export function renderMatch3D(ctx) {
   const { state, entries, names, animating, actions } = ctx;
   const { locked, notice } = state.result;
   const pending = animating ? 'pending' : '';
   const anchors = [];
-  const infos = [];
-  const halves = [0, 1].map((i) => {
+  const locks = [];
+  const sides = [0, 1].map((i) => {
     const e = entries[i];
+    const est = e.rating?.estimated ? ` ${S.est}` : '';
     const anchor = h('button', {
       type: 'button', class: 'card-anchor',
-      'aria-label': `${names[i]}: ${e.team.name}. ${S.inspect}`,
+      'aria-label': `${names[i]}: ${e.team.name}, ${S.stats.ovr} ${e.ovr ?? '—'}${est}, ${e.stars != null ? S.starsAria(e.stars) : S.noStars}. ${S.inspect}`,
     });
     attachTilt(anchor, i, actions, animating);
     anchors.push(anchor);
-    const sub = e.team.type === 'club' ? [e.team.league, e.team.country].filter(Boolean).join(' · ') : e.team.region;
-    const lockBtn = animating ? null : h('button', {
-      class: 'lock-btn', type: 'button', 'aria-pressed': String(locked[i]),
+    const lockBtn = h('button', {
+      class: `lock-btn lock3d ${pending}`, type: 'button', 'aria-pressed': String(locked[i]),
       'aria-label': locked[i] ? S.unlockAria(names[i], e.team.name) : S.lockAria(names[i], e.team.name),
-      onclick: () => actions.lock(i), html: locked[i] ? ICONS.lock : ICONS.unlock,
+      disabled: animating, onclick: () => actions.lock(i), html: locked[i] ? ICONS.lock : ICONS.unlock,
     });
-    // Hidden for the whole sequence (also a locked side): during the clash both cards cross the screen.
-    const info = h('div', { class: `side-info p${i + 1} ${tierClass(e.stars)} ${pending}` },
-      h('span', { class: 'pname' }, names[i]),
-      h('h2', { class: 'tname' }, e.team.name),
-      sub ? h('div', { class: 'tsub' }, sub) : null,
-      h('div', { class: 'side-rating' },
-        h('span', { class: 'ovr-inline num' }, `${S.stats.ovr} ${e.ovr ?? '—'}`, e.rating?.estimated ? h('span', { class: 'est', title: S.estTitle }, ` ${S.est}`) : null),
-        starsEl(e.stars)),
-      lockBtn);
-    infos.push(info);
-    return h('section', { class: `half h${i + 1}`, 'aria-label': names[i] }, i === 0 ? [anchor, info] : [info, anchor]);
+    locks.push(lockBtn);
+    return anchor;
   });
   const cmp = buildCompare(entries, names, notice, pending);
   const vsAnchor = h('div', { class: 'vs-anchor', 'aria-hidden': 'true' });
-  const center = h('section', { class: `clash3d`, 'aria-label': S.vs },
-    vsAnchor,
-    h('div', { class: `cmp-wrap ${pending}` }, cmp.names, cmp.table),
-    cmp.gapLine, cmp.noticeEl);
+  const panel = h('section', { class: `cmp-panel ${pending}`, 'aria-label': S.vs }, cmp.table, cmp.gapLine, cmp.noticeEl);
 
   const el = h('main', { class: 'screen match match3d', onpointerdown: speedHandler(ctx) },
     topBar(state, actions),
-    h('div', { class: 'stage3d' }, halves[0], center, halves[1]),
-    h('div', { class: 'hint', 'aria-hidden': 'true' }, animating ? S.tapToSpeed : S.inspectHint),
+    h('div', { class: 'stage3d' },
+      h('div', { class: 'duel' }, sides[0], sides[1]),
+      // VS rests between the two lock buttons so it never covers the cards.
+      h('div', { class: 'locks-row' }, locks[0], vsAnchor, locks[1]),
+      panel),
+    animating ? h('div', { class: 'hint', 'aria-hidden': 'true' }, S.tapToSpeed) : null,
     buildDock(ctx, locked));
   decorateLockButtons(el);
   return {
     el,
     anchors: { cards: anchors, vs: vsAnchor },
-    reveal: { sides: infos, cmp: center.querySelector('.cmp-wrap'), bars: cmp.bars, rest: [cmp.gapLine, cmp.noticeEl].filter(Boolean) },
+    reveal: { sides: locks, cmp: panel, bars: cmp.bars, rest: [cmp.gapLine, cmp.noticeEl].filter(Boolean) },
   };
 }
 

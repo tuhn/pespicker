@@ -17,11 +17,12 @@ import { Timeline, ease, lerp } from './tween.js';
 import { initialTier, tierSettings, FpsMonitor, saveTier, TIER_ORDER } from './quality.js';
 import { createStadium } from './stadium.js';
 import {
-  shared, cardMaterial, glowMaterial, shockMaterial, trailMaterial, flashMaterial, vsMaterial, burstMaterial, PALETTE,
+  shared, cardMaterial, glowMaterial, shockMaterial, trailMaterial, flashMaterial, vsMaterial, burstMaterial, shadowMaterial, PALETTE,
 } from './materials.js';
 import { CARD_W, CARD_H, TIER_COLORS, tierKey, drawFront, drawBack, drawVs, prepareImages, ensureFonts } from './cardTexture.js';
 
 const FOV = 38;
+const LOOK_Y = 1.75; // > stadium centre: the stadium sits in the lower half, under the cards (projector look)
 const D = 4; // distance of the card plane in camera space
 const CARD_WORLD_W = 1;
 const CARD_WORLD_H = 1.5;
@@ -76,6 +77,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
   const backCanvas = makeCanvas(CARD_W, CARD_H);
   const backTex = texture(backCanvas);
   const glowGeo = new PlaneGeometry(1.7, 2.25);
+  const shadowGeo = new PlaneGeometry(1.5, 2.05);
   const trailGeo = new PlaneGeometry(1, 0.85);
   trailGeo.translate(-0.5, 0, 0);
   const cards = [0, 1].map((side) => {
@@ -83,11 +85,16 @@ export function createScene({ debug = false, onContextLost } = {}) {
     const front = texture(canvasF);
     const material = cardMaterial({ front, back: backTex, size: new Vector2(CARD_WORLD_W, CARD_WORLD_H) });
     const mesh = new Mesh(cardGeo, material);
-    const glow = new Mesh(glowGeo, glowMaterial({ color: new Color(side ? '#5cf2ff' : '#78ff9a'), opacity: 0.5 }));
+    // Fake lighting, all unlit: a soft dark contact shadow offset below the card, then a tier-coloured
+    // rim light around it. Together they lift the card off the busy hologram background.
+    const shadow = new Mesh(shadowGeo, shadowMaterial(0.75));
+    shadow.position.set(0.04, -0.1, -0.16);
+    shadow.renderOrder = -3;
+    const glow = new Mesh(glowGeo, glowMaterial({ color: new Color(side ? '#5cf2ff' : '#78ff9a'), opacity: 0.32 }));
     glow.position.z = -0.08;
-    glow.renderOrder = -1;
+    glow.renderOrder = -2;
     const pivot = new Group();
-    pivot.add(glow, mesh);
+    pivot.add(shadow, glow, mesh);
     pivot.visible = false;
     hud.add(pivot);
     const trail = new Mesh(trailGeo, trailMaterial(new Color(side ? '#5cf2ff' : '#78ff9a')));
@@ -183,7 +190,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
     const sway = Math.sin(swayT * 0.35) * 0.07;
     const dist = camDist * (1 + bootDolly * 0.35);
     camera.position.set(Math.sin(sway) * dist, 2.1 + Math.sin(swayT * 0.5) * 0.05 + bootDolly * 0.8, Math.cos(sway) * dist);
-    camera.lookAt(0, 1.05, 0);
+    camera.lookAt(0, LOOK_Y, 0);
     if (shake > 0) {
       hud.position.set((Math.random() - 0.5) * 0.06 * shake, (Math.random() - 0.5) * 0.06 * shake, 0);
     } else hud.position.set(0, 0, 0);
@@ -191,24 +198,46 @@ export function createScene({ debug = false, onContextLost } = {}) {
 
   function updateCards(dt) {
     const k = 1 - Math.exp(-dt * 10);
+    const time = shared.uTime.value;
+    const idle = !timeline || timeline.done;
     for (const c of cards) {
       c.tilt.x += (c.tilt.tx - c.tilt.x) * k;
       c.tilt.y += (c.tilt.ty - c.tilt.y) * k;
       c.zoom += (c.zoomTo - c.zoom) * k;
       if (c.settled) {
+        // Idle "breathing": slow sway so the foil keeps catching light, plus a periodic shine sweep.
+        const ph = time + c.side * 2.1;
+        const fx = Math.sin(ph * 0.8) * 0.06, fy = Math.sin(ph * 0.55) * 0.1;
+        const bob = Math.sin(ph * 1.1) * 0.012 * c.target.s;
         const s = lerp(c.target.s, Math.min(hV * 0.62 / CARD_WORLD_H, (hW * 0.82) / CARD_WORLD_W), c.zoom);
-        c.pivot.position.set(lerp(c.target.x, 0, c.zoom), lerp(c.target.y, 0, c.zoom), -D + c.zoom * 0.5);
+        c.pivot.position.set(lerp(c.target.x, 0, c.zoom), lerp(c.target.y + bob, 0, c.zoom), -D + c.zoom * 0.5);
         c.pivot.scale.setScalar(s);
-        c.pivot.rotation.set(c.tilt.x, c.tilt.y, 0);
+        c.pivot.rotation.set(c.tilt.x + fx, c.tilt.y + fy, 0);
         c.pivot.renderOrder = c.zoom > 0.01 ? 30 : 0;
+        if (idle) {
+          const cyc = (time + c.side * 2.6) % 5.5;
+          c.material.uniforms.uShine.value = cyc < 1.1 ? cyc / 1.1 : -1;
+        }
       }
     }
   }
 
+  let idleAcc = 0;
   function frame(now) {
-    const dtMs = last ? Math.min(now - last, 100) : 16.7;
+    const raw = last ? now - last : 16.7;
     last = now;
+    const busy = (timeline && !timeline.done) || now < idleUntil || cards.some((c) => Math.abs(c.zoom - c.zoomTo) > 0.002 || Math.abs(c.tilt.x - c.tilt.tx) > 0.002 || Math.abs(c.tilt.y - c.tilt.ty) > 0.002);
+    let dtMs;
+    if (busy) { dtMs = Math.min(raw, 100); idleAcc = 0; } else {
+      // Idle background (stadium drift, card sway): ~30 fps is plenty and halves the battery cost.
+      idleAcc += raw;
+      if (idleAcc < 32) return;
+      dtMs = Math.min(idleAcc, 100);
+      idleAcc = 0;
+    }
     const dt = dtMs / 1000;
+    const dimTo = timeline && !timeline.done ? 1 : 0.8;
+    shared.uDim.value += (dimTo - shared.uDim.value) * (1 - Math.exp(-dt * 3));
     shared.uTime.value += dt;
     if (timeline && !timeline.done) timeline.update(dtMs);
     stadium.tick(dt);
@@ -222,11 +251,9 @@ export function createScene({ debug = false, onContextLost } = {}) {
         bench = null;
         if (fps < 45) monitor.downgrade();
       }
-    } else monitor.frame(dtMs, now);
+    } else if (busy) monitor.frame(dtMs, now); // only judge quality on full-rate frames
     if (frameLog) frameLog.push(now);
     if (hudEl) updateHud(dtMs);
-    const busy = (timeline && !timeline.done) || cards.some((c) => Math.abs(c.zoom - c.zoomTo) > 0.002 || Math.abs(c.tilt.x - c.tilt.tx) > 0.002 || Math.abs(c.tilt.y - c.tilt.ty) > 0.002);
-    if (!busy && now > idleUntil) stop();
   }
 
   function start() {
@@ -407,14 +434,23 @@ export function createScene({ debug = false, onContextLost } = {}) {
     // ---- VS clash ----
     const start = cards.map(() => ({ x: 0, y: 0, s: 1 }));
     const meet = cards.map(() => ({ x: 0, y: 0 }));
+    const dirs = cards.map(() => ({ x: 0, y: 0 }));
+    const hit = { x: 0, y: 0 };
     tl.call(t, () => {
       readLayout();
+      hit.x = (cards[0].target.x + cards[1].target.x) / 2;
+      hit.y = (cards[0].target.y + cards[1].target.y) / 2;
       cards.forEach((c, i) => {
         c.settled = false;
         Object.assign(start[i], c.target);
-        const dir = i === 0 ? 1 : -1;
-        meet[i].x = vsTarget.x;
-        meet[i].y = vsTarget.y + dir * c.target.s * CARD_WORLD_H * 0.42;
+        // Rush along the line from the card to the impact point; stop when the card edge reaches it.
+        let ux = c.target.x - hit.x, uy = c.target.y - hit.y;
+        const len = Math.hypot(ux, uy) || 1;
+        ux /= len; uy /= len;
+        dirs[i].x = ux; dirs[i].y = uy;
+        const reach = (Math.abs(ux) * CARD_WORLD_W + Math.abs(uy) * CARD_WORLD_H) * 0.5 * c.target.s * 0.82;
+        meet[i].x = hit.x + ux * reach;
+        meet[i].y = hit.y + uy * reach;
         const tr = c.trail;
         tr.visible = true;
         const dx = meet[i].x - start[i].x, dy = meet[i].y - start[i].y;
@@ -424,11 +460,12 @@ export function createScene({ debug = false, onContextLost } = {}) {
     });
     tl.add(t, T.clashRush, (k) => {
       cards.forEach((c, i) => {
-        const dir = i === 0 ? 1 : -1;
+        const { x: ux, y: uy } = dirs[i];
         const x = lerp(start[i].x, meet[i].x, k), y = lerp(start[i].y, meet[i].y, k);
         c.pivot.position.set(x, y, -D);
         c.pivot.scale.setScalar(start[i].s);
-        c.pivot.rotation.set(dir * 0.55 * k, 0, dir * 0.12 * k);
+        // lean towards the opponent
+        c.pivot.rotation.set(uy * 0.55 * k, -ux * 0.55 * k, -ux * 0.1 * k);
         c.trail.position.set(x, y, -D - 0.05);
         c.trail.material.uniforms.uOpacity.value = Math.sin(k * Math.PI * 0.95) * 0.9;
       });
@@ -439,12 +476,12 @@ export function createScene({ debug = false, onContextLost } = {}) {
       for (const c of cards) c.trail.visible = false;
       flash.material.color.set('#ffffff');
       shock.visible = true;
-      shock.position.set(vsTarget.x, vsTarget.y, -D + 0.05);
-      burst.position.set(vsTarget.x, vsTarget.y, -D + 0.2);
+      shock.position.set(hit.x, hit.y, -D + 0.05);
+      burst.position.set(hit.x, hit.y, -D + 0.2);
       burst.material.uniforms.uColor.value.set('#5cf2ff');
       burst.material.uniforms.uRadius.value = 1.1;
       vs.visible = true;
-      vs.position.set(vsTarget.x, vsTarget.y, -D + 0.1);
+      vs.position.set(hit.x, hit.y, -D + 0.1);
     });
     tl.add(t, T.clashImpact, (k) => { flash.material.opacity = k < 0.15 ? 1 : (1 - k) * 0.6; shake = k >= 1 ? 0 : 1 - k; }, ease.linear);
     tl.add(t, 520, (k) => { shock.material.uniforms.uT.value = k; shock.scale.setScalar(0.6 + k * 1.6); if (k >= 1) shock.visible = false; }, ease.outCubic);
@@ -455,13 +492,15 @@ export function createScene({ debug = false, onContextLost } = {}) {
       vs.material.uniforms.uGlitch.value = 1 - k;
     }, (x) => ease.outBack(x, 1.6));
     t += T.clashImpact;
+    // VS drops from the impact point to its resting place between the lock buttons.
+    tl.add(t + 120, T.clashSeparate, (k) => { vs.position.set(lerp(hit.x, vsTarget.x, k), lerp(hit.y, vsTarget.y, k), -D + 0.1); }, ease.inOutCubic);
     tl.add(t, T.clashSeparate, (k, raw) => {
       cards.forEach((c, i) => {
-        const dir = i === 0 ? 1 : -1;
+        const { x: ux, y: uy } = dirs[i];
         const to = c.target;
         c.pivot.position.set(lerp(meet[i].x, to.x, k), lerp(meet[i].y, to.y, k), -D);
         c.pivot.scale.setScalar(lerp(start[i].s, to.s, k));
-        c.pivot.rotation.set(dir * 0.55 * (1 - k), 0, dir * 0.12 * (1 - k));
+        c.pivot.rotation.set(uy * 0.55 * (1 - k), -ux * 0.55 * (1 - k), -ux * 0.1 * (1 - k));
         if (raw >= 1) settle(c);
       });
     }, (x) => ease.outBack(x, 1.1));

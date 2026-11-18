@@ -6,6 +6,7 @@ export const shared = {
   uTime: { value: 0 },
   uClip: { value: 99 }, // boot dissolve: world Y above which the stadium is not built yet
   uPixelRatio: { value: 1 },
+  uDim: { value: 1 }, // < 1 on the results screen: background steps back so cards and text read cleanly
 };
 
 const C = (hex) => new Color(hex);
@@ -17,7 +18,7 @@ const additive = { transparent: true, depthWrite: false, blending: AdditiveBlend
 export function holoLineMaterial({ colorA = PALETTE.neon, colorB = PALETTE.cyan, opacity = 0.9 } = {}) {
   return new ShaderMaterial({
     ...additive,
-    uniforms: { uTime: shared.uTime, uClip: shared.uClip, uA: { value: colorA }, uB: { value: colorB }, uOpacity: { value: opacity } },
+    uniforms: { uTime: shared.uTime, uClip: shared.uClip, uDim: shared.uDim, uA: { value: colorA }, uB: { value: colorB }, uOpacity: { value: opacity } },
     vertexShader: /* glsl */`
       varying vec3 vW;
       void main() {
@@ -26,7 +27,7 @@ export function holoLineMaterial({ colorA = PALETTE.neon, colorB = PALETTE.cyan,
         gl_Position = projectionMatrix * viewMatrix * w;
       }`,
     fragmentShader: /* glsl */`
-      uniform float uTime, uClip, uOpacity; uniform vec3 uA, uB;
+      uniform float uTime, uClip, uOpacity, uDim; uniform vec3 uA, uB;
       varying vec3 vW;
       void main() {
         float d = uClip - vW.y;
@@ -35,7 +36,7 @@ export function holoLineMaterial({ colorA = PALETTE.neon, colorB = PALETTE.cyan,
         float flick = 0.88 + 0.12 * sin(uTime * 31.0 + vW.x * 5.0);
         float front = 1.0 - smoothstep(0.0, 0.12, d);         // bright edge where it is being built
         vec3 col = mix(uA, uB, clamp(vW.y * 0.6 - 0.2, 0.0, 1.0));
-        gl_FragColor = vec4(col * scan * flick + front * vec3(0.9), uOpacity * (0.55 + 0.45 * scan));
+        gl_FragColor = vec4(col * scan * flick + front * vec3(0.9), uOpacity * uDim * (0.55 + 0.45 * scan));
       }`,
   });
 }
@@ -45,7 +46,7 @@ export function holoSurfaceMaterial({ color = PALETTE.cyan, opacity = 0.35, fres
   return new ShaderMaterial({
     ...additive,
     side: DoubleSide,
-    uniforms: { uTime: shared.uTime, uClip: shared.uClip, uColor: { value: color }, uOpacity: { value: opacity }, uPow: { value: fresnelPow } },
+    uniforms: { uTime: shared.uTime, uClip: shared.uClip, uDim: shared.uDim, uColor: { value: color }, uOpacity: { value: opacity }, uPow: { value: fresnelPow } },
     vertexShader: /* glsl */`
       varying vec3 vW; varying vec3 vN; varying vec3 vV;
       void main() {
@@ -56,7 +57,7 @@ export function holoSurfaceMaterial({ color = PALETTE.cyan, opacity = 0.35, fres
         gl_Position = projectionMatrix * viewMatrix * w;
       }`,
     fragmentShader: /* glsl */`
-      uniform float uTime, uClip, uOpacity, uPow; uniform vec3 uColor;
+      uniform float uTime, uClip, uOpacity, uPow, uDim; uniform vec3 uColor;
       varying vec3 vW; varying vec3 vN; varying vec3 vV;
       void main() {
         float d = uClip - vW.y;
@@ -65,7 +66,7 @@ export function holoSurfaceMaterial({ color = PALETTE.cyan, opacity = 0.35, fres
         float scan = 0.7 + 0.3 * sin(vW.y * 60.0 - uTime * 5.0);
         float flick = 0.9 + 0.1 * sin(uTime * 23.0 + vW.y * 7.0);
         float front = 1.0 - smoothstep(0.0, 0.1, d);
-        gl_FragColor = vec4(uColor * (fres * 1.4 + 0.08) * scan * flick + front * 0.6, uOpacity * (fres + 0.12));
+        gl_FragColor = vec4(uColor * (fres * 1.4 + 0.08) * scan * flick + front * 0.6, uOpacity * uDim * (fres + 0.12));
       }`,
   });
 }
@@ -120,15 +121,15 @@ export function beamMaterial() {
   return new ShaderMaterial({
     ...additive,
     side: DoubleSide,
-    uniforms: { uTime: shared.uTime, uIntensity: { value: 0.5 }, uColor: { value: PALETTE.cyan } },
+    uniforms: { uTime: shared.uTime, uDim: shared.uDim, uIntensity: { value: 0.5 }, uColor: { value: PALETTE.cyan } },
     vertexShader: /* glsl */`varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
     fragmentShader: /* glsl */`
-      uniform float uTime, uIntensity; uniform vec3 uColor; varying vec2 vUv;
+      uniform float uTime, uIntensity, uDim; uniform vec3 uColor; varying vec2 vUv;
       void main() {
         float fade = pow(1.0 - vUv.y, 1.6);                 // bright at the base
         float rays = 0.75 + 0.25 * sin(vUv.x * 62.83 + uTime * 1.5);
         float scan = 0.8 + 0.2 * sin(vUv.y * 80.0 - uTime * 6.0);
-        gl_FragColor = vec4(uColor, fade * rays * scan * 0.32 * uIntensity);
+        gl_FragColor = vec4(uColor, fade * rays * scan * 0.32 * uIntensity * uDim);
       }`,
   });
 }
@@ -330,6 +331,23 @@ export function cardMaterial({ front, back, size }) {
         col += vec3(0.6, 1.0, 0.8) * scanEdge * 1.5;
         float scan = 0.96 + 0.04 * sin(vUv.y * 400.0 - uTime * 8.0);
         gl_FragColor = vec4(col * scan, a * uOpacity);
+      }`,
+  });
+}
+
+// ---------- soft contact shadow behind a card (normal blending: darkens what is behind) ----------
+export function shadowMaterial(opacity = 0.7) {
+  return new ShaderMaterial({
+    transparent: true, depthWrite: false, depthTest: false, blending: NormalBlending,
+    uniforms: { uOpacity: { value: opacity } },
+    vertexShader: /* glsl */`varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+    fragmentShader: /* glsl */`
+      uniform float uOpacity; varying vec2 vUv;
+      void main() {
+        vec2 p = (vUv - 0.5) * vec2(2.0, 2.0);
+        vec2 q = max(abs(p) - vec2(0.62, 0.7), 0.0);   // rounded-rect falloff
+        float d = length(q) / 0.38;
+        gl_FragColor = vec4(0.0, 0.02, 0.01, uOpacity * exp(-d * d * 2.2));
       }`,
   });
 }

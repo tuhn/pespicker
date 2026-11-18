@@ -2,7 +2,7 @@
 
 Web app bốc ngẫu nhiên đội bóng cho trận 1 vs 1 PES 2021 giữa 2 người chơi: chọn mode (National / Clubs / Mixed), chế độ cân bằng, bấm bốc, xem màn reveal 3D hologram rồi vào game chọn đúng đội. Toàn bộ app là một file `dist/index.html` chạy offline.
 
-Màn bốc 3D gồm 3 phần: **Holographic Stadium** (sân vận động hologram dựng lên từ đế chiếu), **3D Team Cards** (card lật 1.5 vòng, foil ánh cầu vồng đổi theo góc nghiêng), **VS Clash** (hai card lao vào nhau, sóng xung kích, chữ VS glitch, thanh so sánh). Máy không có WebGL, bật `prefers-reduced-motion` hoặc bật "Reduce effects" thì dùng bản 2D bằng CSS, logic bốc giữ nguyên.
+Màn bốc 3D gồm 3 phần: **Holographic Stadium** (sân vận động hologram dựng lên từ đế chiếu), **3D Team Cards** (card lật 1.5 vòng, foil ánh cầu vồng đổi theo góc nghiêng), **VS Clash** (hai card lao vào nhau, sóng xung kích, chữ VS glitch, thanh so sánh). Màn kết quả: hai card đứng cạnh nhau (P1 trái, P2 phải) để cột trái/phải của thanh so sánh khớp với card, nút khoá và chữ VS nằm ngay dưới card, nền 3D vẫn chuyển động nhẹ. Máy không có WebGL, bật `prefers-reduced-motion` hoặc bật "Reduce effects" thì dùng bản 2D bằng CSS, logic bốc giữ nguyên.
 
 | Card reveal | VS Clash | Kết quả |
 |---|---|---|

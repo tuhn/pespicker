@@ -232,10 +232,10 @@ Tuyển được quy đổi (hiện nhãn "est." trong app):
 
 | Chuỗi | fps TB | p95 frame (ms) | frame dài nhất (ms) | số frame > 50 ms |
 |---|---:|---:|---:|---:|
-| full draw | 59.2 | 16.7 | 66.7 | 1 |
+| full draw | 59.3 | 16.8 | 66.6 | 1 |
 | redraw one side | 59.7 | 16.7 | 33.3 | 0 |
 
-Scene: 17 draw call, 1138 triangle, 4 texture (2 mặt card 512×768, mặt sau, VS 256×256; khoảng 6.6 MB kèm mipmap, ngân sách 48 MB), tier `high`, DPR 2.
+Scene: 19 draw call, 1142 triangle, 4 texture (2 mặt card 512×768, mặt sau, VS 256×256; khoảng 6.6 MB kèm mipmap, ngân sách 48 MB), tier `high`, DPR 2.
 
 ### GPU phần mềm (SwiftShader, kịch bản xấu nhất)
 
@@ -247,10 +247,12 @@ Scene: 17 draw call, 1138 triangle, 4 texture (2 mặt card 512×768, mặt sau,
 Tier tự hạ từ `high` xuống `medium` (DPR 1.5) sau khoảng 1.5s fps thấp.
 
 ### Nhận xét
-- Ngân sách: draw call ≤ 60 (đang 17), triangle ≤ 150k (đang ~1.1k), texture ≤ 1024px (lớn nhất 512×768), không có light và shadow, mọi material đều unlit.
+- Ngân sách: draw call ≤ 60 (đang 19), triangle ≤ 150k (đang ~1.1k), texture ≤ 1024px (lớn nhất 512×768), không có light và shadow, mọi material đều unlit.
 - Frame > 50 ms duy nhất còn lại nằm ở ~100–170 ms đầu sau khi bấm Draw: chuyển DOM từ Setup sang Draw và giải mã ảnh cờ/logo lần đầu. Lúc đó canvas còn ẩn và timeline chưa chạy. Trong chính chuỗi animation (boot → card → clash) không có frame nào > 50 ms trên GPU thật. Redraw một bên: frame dài nhất 16.8–33 ms.
 - Đã xử lý jank: compile shader + upload texture trong lúc idle sau khi Setup hiện; vẽ mặt card rải qua nhiều frame; canvas 2D dùng `willReadFrequently` để upload texture không phải đọc ngược từ GPU; tắt `checkShaderErrors` khi không debug.
 - Bloom và chromatic aberration toàn màn hình **chưa làm** (CLAUDE.md cho phép chỉ bật ở tier high). Glow hiện dùng sprite additive và emissive trong shader.
+
+- Màn kết quả: nền 3D chạy liên tục ở ~30 fps (sân xoay, hạt, card lắc nhẹ, vệt sáng quét), dừng khi tab ẩn hoặc rời màn.
 
 ### Thiết bị thật (Android)
 **Chưa đo.** Cần chạy `npm run dev`, mở `http://<IP LAN>:5173/?debug=1` trên điện thoại (vd Galaxy A54), bấm Draw vài lần rồi ghi fps, frame time và tier từ HUD vào đây.
