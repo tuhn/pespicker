@@ -7,14 +7,14 @@ export const RATINGS_VERSION = 'fc27';
  * Minimum OVR needed for each star level, from 1.5★ up to 5★ (8 values, ascending).
  * Below the first value a team is 1★. Step is 0.5★.
  *
- * Fixed OVR bands: every half star = 2 OVR, 5★ = 84+. Chosen over the quantile cuts
- * (73/76/77/78/79/80/82/84) because most teams sit at OVR 76-80, so equal-count tiers turned a
- * 1-2 OVR difference into a whole star (Algeria 75 = 1.5★ next to Mexico 77 = 2.5★). With bands the
- * stars read straight from the OVR. The quantile suggestion is still listed in DATA_REPORT.md.
+ * Fixed OVR bands: every half star = 3 OVR, 5★ = 84+, so OVR 75 = 3.5★ (75-77).
+ * Bands instead of quantile cuts (73/76/77/78/79/80/82/84): most teams sit at OVR 76-80, so
+ * equal-count tiers turned a 1-2 OVR difference into a whole star. With bands the stars read
+ * straight from the OVR. The quantile suggestion is still listed in DATA_REPORT.md.
  * Edit by hand freely; `npm run report` shows the resulting distribution.
  */
 //                     1.5★ 2★  2.5★ 3★  3.5★ 4★  4.5★ 5★
-export const STAR_THRESHOLDS = [70, 72, 74, 76, 78, 80, 82, 84];
+export const STAR_THRESHOLDS = [63, 66, 69, 72, 75, 78, 81, 84];
 
 /** Show club crests on cards (false = monogram badge on club colors). */
 export const SHOW_CLUB_LOGOS = true;

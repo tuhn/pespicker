@@ -106,10 +106,10 @@ Trong `src/config.js`, `STAR_THRESHOLDS` là 8 mức OVR tối thiểu cho 1.5�
 
 ```js
 //                     1.5★ 2★  2.5★ 3★  3.5★ 4★  4.5★ 5★
-export const STAR_THRESHOLDS = [70, 72, 74, 76, 78, 80, 82, 84];
+export const STAR_THRESHOLDS = [63, 66, 69, 72, 75, 78, 81, 84];
 ```
 
-Mặc định là dải OVR cố định: mỗi nửa sao = 2 OVR, 5★ = OVR 84 trở lên, nên nhìn OVR là đoán được sao. Không dùng quantile (chia đều số đội vào 9 mức) vì phần lớn đội nằm ở OVR 76–80: chênh 1–2 OVR đã thành 1 sao, dễ gây khó hiểu (vd Algeria 75 bị 1.5★ trong khi Mexico 77 được 2.5★). Bảng "Ngưỡng sao" trong `DATA_REPORT.md` vẫn có hàng quantile để tham khảo. Sửa xong chạy `npm run report` để xem phân bố mới. CLB và tuyển dùng chung một thang. Trong app, nút **Star scale** ở mục Balance hiện bảng OVR của từng mức sao và số đội mỗi mức.
+Mặc định là dải OVR cố định: mỗi nửa sao = 3 OVR, 5★ = OVR 84 trở lên (3.5★ = 75–77, 4★ = 78–80, 4.5★ = 81–83), nên nhìn OVR là đoán được sao. Không dùng quantile (chia đều số đội vào 9 mức) vì phần lớn đội nằm ở OVR 76–80: chênh 1–2 OVR đã thành 1 sao, dễ gây khó hiểu (vd Algeria 75 bị 1.5★ trong khi Mexico 77 được 2.5★). Bảng "Ngưỡng sao" trong `DATA_REPORT.md` vẫn có hàng quantile để tham khảo. Sửa xong chạy `npm run report` để xem phân bố mới. CLB và tuyển dùng chung một thang. Trong app, nút **Star scale** ở mục Balance hiện bảng OVR của từng mức sao và số đội mỗi mức.
 
 ### Thêm hoặc bớt một đội
 
@@ -153,7 +153,7 @@ _Phase 5. Project: `pespicker`, domain `pespicker.tuhoang.app`._
 | Key | Ý nghĩa | Mặc định |
 |---|---|---|
 | `RATINGS_VERSION` | bản fifaindex cho `fetch:ratings` | `'fc27'` |
-| `STAR_THRESHOLDS` | OVR tối thiểu cho 1.5★ → 5★ | `[70, 72, 74, 76, 78, 80, 82, 84]` |
+| `STAR_THRESHOLDS` | OVR tối thiểu cho 1.5★ → 5★ | `[63, 66, 69, 72, 75, 78, 81, 84]` |
 | `SHOW_CLUB_LOGOS` | hiện logo CLB (false = badge monogram) | `true` |
 | `DEFAULT_BALANCE` | chế độ cân bằng mặc định | `{ mode: 'gap', gap: 1 }` |
 | `HISTORY_LIMIT` | số lượt lịch sử lưu | `20` |
