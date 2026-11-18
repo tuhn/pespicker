@@ -102,7 +102,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
     trail.visible = false;
     hud.add(trail);
     return {
-      side, canvas: canvasF, front, material, pivot, glow, trail, key: null,
+      side, canvas: canvasF, front, material, pivot, glow, shadow, trail, key: null,
       target: { x: 0, y: 0, s: 0.5 }, // layout rect in camera space
       tilt: { x: 0, y: 0, tx: 0, ty: 0 }, zoom: 0, zoomTo: 0,
     };
@@ -366,9 +366,25 @@ export function createScene({ debug = false, onContextLost } = {}) {
    * Returns { finished, speedUp(), skip() }.
    */
   async function play({ entries, names, animateSides, boot, onBars, onSide }) {
+    timeline?.skip();
+    // Redraw: the cards being redrawn still show the previous result. Scan them out and hide them
+    // (and the VS badge) BEFORE their textures are replaced, so the new team is never visible
+    // until its own reveal.
+    const outgoing = cards.filter((c) => animateSides[c.side] && c.pivot.visible);
+    if (outgoing.length || vs.visible) {
+      const out = new Timeline();
+      timeline = out;
+      out.add(0, 220, (k) => {
+        for (const c of outgoing) { c.material.uniforms.uReveal.value = 1 - k; setHalo(c, 1 - k); }
+        vs.material.uniforms.uOpacity.value = 1 - k;
+      }, ease.inQuad);
+      poke();
+      await out.finished;
+    }
+    for (const c of cards) if (animateSides[c.side]) { c.pivot.visible = false; c.settled = false; }
+    vs.visible = false;
     await prepare(entries, names);
     readLayout();
-    timeline?.skip();
     const T = TIMING_3D;
     const tl = new Timeline();
     timeline = tl;
@@ -409,7 +425,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
         c.tilt.x = c.tilt.y = c.tilt.tx = c.tilt.ty = 0;
         c.zoom = c.zoomTo = 0;
       });
-      tl.add(t, T.cardScan, (k) => { u.uReveal.value = k; stadium.beam.material.uniforms.uIntensity.value = 1 + Math.sin(k * Math.PI) * 1.5; });
+      tl.add(t, T.cardScan, (k) => { u.uReveal.value = k; setHalo(c, k); stadium.beam.material.uniforms.uIntensity.value = 1 + Math.sin(k * Math.PI) * 1.5; });
       t += T.cardScan;
       tl.add(t, T.cardSpin, (k) => { c.pivot.rotation.y = Math.PI + k * Math.PI * 3; }, (x) => ease.outBack(x, 0.9));
       t += T.cardSpin;
@@ -525,8 +541,15 @@ export function createScene({ debug = false, onContextLost } = {}) {
     };
   }
 
+  /** Rim glow + contact shadow follow the card's visibility (scan-in / scan-out). */
+  function setHalo(c, k) {
+    c.glow.material.uniforms.uOpacity.value = 0.32 * k;
+    c.shadow.material.uniforms.uOpacity.value = 0.75 * k;
+  }
+
   function settle(c) {
     c.settled = true;
+    setHalo(c, 1);
     c.pivot.visible = true;
     c.material.uniforms.uReveal.value = 1;
     c.pivot.position.set(c.target.x, c.target.y, -D);
