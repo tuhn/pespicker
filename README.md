@@ -8,7 +8,7 @@ Màn bốc 3D gồm 3 phần: **Holographic Stadium** (sân vận động hologr
 |---|---|---|
 | ![card reveal](docs/card-reveal.png) | ![VS clash](docs/clash.png) | ![kết quả](docs/results.png) |
 
-> Trạng thái: Phase 1–4 xong. Deploy (Phase 5) sẽ bổ sung khi làm.
+Bản chạy thật: **https://pespicker.tuhoang.app** (cài được thành app trên điện thoại, xem mục 4).
 
 ## 1. Yêu cầu môi trường
 
@@ -156,7 +156,71 @@ npm run build
 
 ## 5. Deploy Cloudflare Pages
 
-_Phase 5. Project: `pespicker`, domain `pespicker.tuhoang.app`._
+Project Pages: `pespicker` (production branch `main`), URL `https://pespicker.pages.dev`, domain `https://pespicker.tuhoang.app`. `wrangler` đã nằm trong devDependencies (pin 4.164.0) nên chỉ cần `npx wrangler`, không phải cài global. Cú pháp dưới đây đã đối chiếu với tài liệu Cloudflare (Wrangler commands → Pages, Pages → Custom domains) ngày 2026-11-18.
+
+### Lần đầu
+
+1. Đăng nhập (mở trình duyệt để cấp quyền OAuth):
+
+   ```bash
+   npx wrangler login
+   ```
+
+   Kiểm tra: `npx wrangler whoami` phải hiện email và Account ID.
+
+2. Tạo project Pages:
+
+   ```bash
+   npx wrangler pages project create pespicker --production-branch main --force
+   ```
+
+   Với wrangler 4.164, lệnh tạo project mặc định chuyển sang "Pages mới trên Workers" và báo lỗi *Missing entry-point to Worker script or to assets directory*. `--force` tạo project trên Cloudflare Pages như bình thường. Chỉ lần tạo này cần `--force`; các lệnh sau chạy thẳng trên Pages. Nếu bản wrangler mới không còn chuyển hướng này thì bỏ `--force`.
+
+3. Build và deploy:
+
+   ```bash
+   npm run deploy
+   ```
+
+   Lệnh này chạy `npm run build` rồi `wrangler pages deploy dist --project-name pespicker --branch main`, in ra URL deployment (vd `https://b889f711.pespicker.pages.dev`). Bản production nằm ở `https://pespicker.pages.dev`.
+
+### Gắn custom domain `pespicker.tuhoang.app`
+
+Wrangler không có lệnh gắn domain, làm trên dashboard:
+
+1. Dashboard Cloudflare → **Workers & Pages** → **pespicker** → tab **Custom domains** → **Set up a custom domain**.
+2. Nhập `pespicker.tuhoang.app` → **Continue**.
+3. Màn **Confirm new DNS record** hiện bản ghi `CNAME pespicker → pespicker.pages.dev` → **Activate domain**. Vì `tuhoang.app` đã là zone trên Cloudflare, bản ghi được tạo tự động.
+4. Xác nhận trong **Domains → tuhoang.app → DNS → Records** có bản ghi CNAME `pespicker` (Proxied) trỏ tới `pespicker.pages.dev`.
+5. Chờ trạng thái domain trong tab Custom domains chuyển từ *Initializing* sang **Active** (thường vài phút, tối đa 48 giờ). Khi Active, SSL đã cấp xong và `https://pespicker.tuhoang.app` chạy được.
+
+Không tự tạo CNAME bằng tay trước bước 1–3: theo tài liệu Cloudflare, domain chưa gắn trong Pages sẽ trả lỗi 522.
+
+### Các lần sau
+
+```bash
+npm run deploy
+```
+
+Người dùng đã cài app (PWA) sẽ nhận bản mới ở lần mở tiếp theo khi có mạng.
+
+### Không dùng CLI: Direct Upload
+
+1. `npm run build`.
+2. Dashboard → **Workers & Pages** → **pespicker** → **Create deployment**.
+3. Chọn môi trường Production (branch `main`), kéo thả **cả thư mục `dist`** (gồm `index.html`, `sw.js`, `manifest.webmanifest`, `icons/`, `_headers`) → **Save and Deploy**.
+
+### Rollback
+
+Dashboard → **Workers & Pages** → **pespicker** → tab **Deployments** → chọn deployment cũ → menu **⋯** → **Rollback to this deployment**. Domain trỏ ngay về bản đó.
+
+### Kiểm tra sau deploy
+
+```bash
+npm run check:pwa
+```
+
+kiểm tra bản `dist` cục bộ. Với bản live: mở `https://pespicker.tuhoang.app` trên điện thoại, thấy nút **Install app** (Android) hoặc dùng Share → Add to Home Screen (iOS).
 
 ## 6. Cấu hình (`src/config.js`)
 
@@ -200,7 +264,10 @@ Tổng màn Draw (boot + 2 card + clash) mặc định khoảng 5.9s, nằm tron
 - **WebGL không chạy:** app tự chuyển sang bản 2D (CSS), không cần làm gì. Muốn thử bản 2D trên máy có WebGL: thêm `?no3d` vào URL. Mất WebGL giữa chừng (`webglcontextlost`) thì lượt đang chạy nhảy thẳng tới kết quả và các lượt sau dùng 2D cho tới khi context được khôi phục.
 - **Animation giật trên máy yếu:** bật "Reduce effects" ở màn Setup.
 
-_Mục lỗi xác thực wrangler sẽ bổ sung ở Phase 5._
+- **Deploy lỗi xác thực wrangler** (`Authentication error`, `Not logged in`, `code: 10000`): chạy `npx wrangler logout` rồi `npx wrangler login`, kiểm tra `npx wrangler whoami`. Có nhiều account thì đặt `CLOUDFLARE_ACCOUNT_ID=<Account ID>` trước lệnh deploy. Trên máy CI dùng API token (quyền *Cloudflare Pages: Edit*) qua biến `CLOUDFLARE_API_TOKEN`.
+- **`pages project create` báo "Missing entry-point to Worker script"**: thêm `--force` (xem mục 5).
+- **Domain trả lỗi 522 hoặc chưa có SSL**: domain còn *Initializing* trong tab Custom domains, chờ chuyển Active. Nếu lâu, kiểm tra bản ghi CNAME `pespicker` trong DNS của `tuhoang.app` vẫn trỏ `pespicker.pages.dev` và đang Proxied.
+- **Đã cài app nhưng không thấy bản mới**: đóng hẳn app rồi mở lại khi có mạng (service worker lấy `index.html` mới từ mạng trước).
 
 ## 8. Lệnh npm
 
