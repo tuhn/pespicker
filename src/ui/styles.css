@@ -307,3 +307,6 @@ table.scale { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 
 table.scale th { text-align: left; color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 4px; border-bottom: 1px solid var(--line); }
 table.scale td { padding: 7px 4px; border-bottom: 1px solid rgba(31,61,48,0.6); --tier: var(--lime); }
 table.scale td:nth-child(2), table.scale td:nth-child(3), table.scale th:nth-child(2), table.scale th:nth-child(3) { text-align: right; }
+
+.brand-actions { display: flex; align-items: center; gap: 2px; }
+.install-btn { color: var(--cyan); }

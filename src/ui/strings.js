@@ -74,6 +74,7 @@ export const S = {
   noStars: 'Unrated',
   starsAria: (s) => `${s} stars`,
 
+  install: 'Install app',
   history: 'History',
   historyEmpty: 'No draws yet.',
   historyClear: 'Clear history',

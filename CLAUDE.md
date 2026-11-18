@@ -12,6 +12,7 @@ Web app cá nhân để bốc ngẫu nhiên đội bóng cho trận 1 vs 1 giữ
 
 ## Ràng buộc kỹ thuật
 - Output: 1 file duy nhất `dist/index.html`, chạy offline khi mở trực tiếp (file://) và khi host trên Cloudflare Pages. Không gọi network lúc runtime.
+  - Ngoại lệ PWA (cài thành app trên mobile): build sinh thêm `manifest.webmanifest`, `sw.js`, `icons/*.png`, `_headers` cạnh `index.html`. Các file này chỉ dùng khi chạy qua https; `index.html` vẫn phải tự chạy được một mình qua file:// và không request file PWA nào khi mở từ file://.
 - Source chia module trong `src/`. Build bằng Node + esbuild, inline toàn bộ JS, CSS, data JSON, ảnh (data URI) vào `dist/index.html`.
 - Vanilla JS (ES modules). Không React, không framework UI. Three.js pin version cụ thể, tree-shake, inline.
 - Ngân sách: `dist/index.html` <= 3 MB. Cảnh 3D >= 50 fps trên Android tầm trung (vd Galaxy A54). Tương tác được < 3s trên 4G.

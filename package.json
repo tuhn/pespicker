@@ -18,7 +18,8 @@
     "deploy": "npm run build && wrangler pages deploy dist --project-name pespicker",
     "screenshot": "node scripts/screenshot.mjs",
     "preview:assets": "node scripts/preview-assets.mjs",
-    "perf": "node scripts/perf.mjs"
+    "perf": "node scripts/perf.mjs",
+    "check:pwa": "node scripts/check-pwa.mjs"
   },
   "dependencies": {
     "three": "0.187.0"

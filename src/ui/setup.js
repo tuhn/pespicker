@@ -52,10 +52,15 @@ export function renderSetup(ctx) {
   const historyBtn = h('button', { type: 'button', class: 'btn-ghost', onclick: actions.openHistory, 'aria-label': `${S.history} (${state.history.length})` },
     h('span', { html: ICONS.history, style: { display: 'inline-flex', width: '18px' } }), S.history, h('span', { class: 'num' }, state.history.length ? `(${state.history.length})` : ''));
 
+  const installBtn = h('button', { type: 'button', class: 'btn-ghost install-btn', onclick: actions.install, html: ICONS.download });
+  installBtn.append(S.install);
+
   return h('main', { class: 'screen setup' },
     h('header', { class: 'brand' },
       h('div', null, h('h1', null, S.appTitle), h('p', null, S.appTagline)),
-      historyBtn),
+      h('div', { class: 'brand-actions' },
+        ctx.canInstall ? installBtn : null,
+        historyBtn)),
     h('section', { class: 'panel', 'aria-labelledby': 'pool-t' },
       h('h2', { class: 'panel-title', id: 'pool-t' }, S.pool, h('span', { class: 'num' }, S.ratedCount(stats.rated, stats.total))),
       tabs),

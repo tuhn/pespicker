@@ -27,6 +27,7 @@ const D = 4; // distance of the card plane in camera space
 const CARD_WORLD_W = 1;
 const CARD_WORLD_H = 1.5;
 const MAX_PARTICLES = 900;
+const REVEAL_FWD = 1.1; // > half the revealing card's width, see play()
 const FOIL_BY_TIER = { 5: 1.0, 4: 0.75, 3: 0.45, 0: 0.25 };
 
 /** True if a WebGL context can be created (without keeping it). */
@@ -414,11 +415,15 @@ export function createScene({ debug = false, onContextLost } = {}) {
       if (!animateSides[c.side]) continue;
       const u = c.material.uniforms;
       const five = entries[c.side].stars === 5;
-      const center = { x: 0, y: hV * 0.04, s: (hV * 0.5) / CARD_WORLD_H };
+      // The revealing card spins in front of the other (already placed) card: pull it towards the
+      // camera by REVEAL_FWD and shrink it by the same perspective ratio, so it looks the same size
+      // but its swept volume never intersects the other card's plane (no depth clipping).
+      const persp = (D - REVEAL_FWD) / D;
+      const center = { x: 0, y: hV * 0.04 * persp, s: ((hV * 0.5) / CARD_WORLD_H) * persp, z: -D + REVEAL_FWD };
       tl.call(t, () => {
         c.settled = false;
         c.pivot.visible = true;
-        c.pivot.position.set(center.x, center.y, -D);
+        c.pivot.position.set(center.x, center.y, center.z);
         c.pivot.scale.setScalar(center.s);
         c.pivot.rotation.set(0, Math.PI, 0);
         u.uReveal.value = 0; u.uShine.value = -1;
@@ -431,7 +436,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
       t += T.cardSpin;
       if (five) {
         tl.add(t, T.cardFlash, (k) => { flash.material.color.copy(PALETTE.gold); flash.material.opacity = (1 - k) * 0.75; }, ease.outQuad);
-        tl.call(t, () => { burst.position.set(center.x, center.y, -D + 0.2); burst.material.uniforms.uColor.value.copy(PALETTE.gold); burst.material.uniforms.uRadius.value = 1.4; });
+        tl.call(t, () => { burst.position.set(center.x, center.y, center.z + 0.2); burst.material.uniforms.uColor.value.copy(PALETTE.gold); burst.material.uniforms.uRadius.value = 1.4; });
         tl.add(t, 900, (k) => { burst.material.uniforms.uT.value = k >= 1 ? -1 : k; });
         tl.add(t, 1000, (k) => { stadium.pitch.material.uniforms.uWave.value = k >= 1 ? -1 : k; });
         tl.add(t, 650, (k) => { u.uShine.value = k >= 1 ? -1 : k; });
@@ -439,7 +444,7 @@ export function createScene({ debug = false, onContextLost } = {}) {
       const from = { ...center };
       tl.add(t, T.cardSlide, (k, raw) => {
         const to = c.target;
-        c.pivot.position.set(lerp(from.x, to.x, k), lerp(from.y, to.y, k), -D);
+        c.pivot.position.set(lerp(from.x, to.x, k), lerp(from.y, to.y, k), lerp(from.z, -D, k));
         c.pivot.scale.setScalar(lerp(from.s, to.s, k));
         c.pivot.rotation.set(Math.sin(k * Math.PI) * 0.25, 0, 0);
         if (raw >= 1) { settle(c); onSide?.(c.side); }

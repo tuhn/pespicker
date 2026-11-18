@@ -41,5 +41,6 @@ export const ICONS = {
   back: svg('<path d="M15 18l-6-6 6-6"/>'),
   redraw: svg('<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/>'),
   close: svg('<path d="M6 6l12 12M18 6L6 18"/>'),
+  download: svg('<path d="M12 4v11M12 15l-4-4M12 15l4-4M5 20h14"/>'),
   trash: svg('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'),
 };

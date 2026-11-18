@@ -137,12 +137,22 @@ Sau đó chạy `npm run fetch:ratings` và `npm run fetch:assets`. Logo tự l�
 npm run build
 ```
 
-- Output: `dist/index.html`, một file duy nhất. JS, CSS, data JSON, cờ, logo và font Chakra Petch (subset Latin + Latin Extended) đều được nhúng vào.
+- Output: `dist/index.html`, một file tự chứa đủ mọi thứ (kèm các file PWA nhỏ, xem mục bên dưới). JS, CSS, data JSON, cờ, logo và font Chakra Petch (subset Latin + Latin Extended) đều được nhúng vào.
 - Lệnh in kích thước và % ngân sách 3 MB, ví dụ `dist/index.html  420.7 KB  (14% of 3 MB budget)`. Vượt ngân sách thì lệnh trả mã lỗi.
 - Kiểm tra chạy offline: tắt mạng, mở thẳng file bằng trình duyệt (kéo `dist/index.html` vào Chrome, hoặc mở `file:///.../dist/index.html`). App phải chạy đủ, không cần server.
 - Tự kiểm tra bằng screenshot: `npm run screenshot` chụp các màn ở 390×844 và 360×780 vào `screenshots/`. Script báo lỗi nếu có console error hoặc request mạng nào.
 - Xem nhanh toàn bộ cờ và logo: `npm run preview:assets` → `screenshots/assets-preview.png`.
 - Đo hiệu năng: `npm run perf` (Playwright + CDP, 390×844, CPU throttle 4x) in fps trung bình, p95 frame time, frame dài nhất của chuỗi Draw đầy đủ và Redraw một bên. `npm run perf -- --swiftshader` đo với GPU phần mềm (kịch bản xấu nhất). Đây chỉ là số tham khảo trên desktop, vẫn phải thử trên điện thoại thật bằng `?debug=1`.
+
+### Cài thành app (PWA)
+
+`npm run build` sinh thêm các file PWA cạnh `dist/index.html`: `manifest.webmanifest`, `sw.js` (service worker), `icons/` và `_headers` (quy tắc cache cho Cloudflare Pages). `index.html` vẫn chạy một mình qua `file://`; khi mở từ `file://` app không tải file PWA nào.
+
+- Chỉ cài được khi app chạy qua **https** (bản deploy `https://pespicker.tuhoang.app`). Địa chỉ LAN `http://192.168.x.x:5173` của `npm run dev` không cài được vì không phải https; dev server cũng không đăng ký service worker để khỏi phá live reload.
+- **Android (Chrome):** mở trang, bấm nút **Install app** ở góc trên màn Setup (hiện khi Chrome cho phép cài), hoặc menu ⋮ → *Install app* / *Add to Home screen*.
+- **iPhone (Safari):** nút Share → *Add to Home Screen*.
+- Sau khi cài, app mở toàn màn hình và chạy offline (service worker cache `index.html` và icon). Có mạng thì app tự lấy bản deploy mới nhất ở lần mở tiếp theo.
+- Kiểm tra: `npm run build && npm run check:pwa` (Playwright: hỏi Chrome app có cài được không, chờ service worker nắm trang, tắt mạng rồi tải lại và bốc thử).
 
 ## 5. Deploy Cloudflare Pages
 
@@ -206,4 +216,5 @@ _Mục lỗi xác thực wrangler sẽ bổ sung ở Phase 5._
 | `npm run screenshot` | chụp screenshot tự kiểm tra (390×844, 360×780) |
 | `npm run preview:assets` | ảnh tổng hợp cờ và logo |
 | `npm run perf` | đo fps, p95, frame dài nhất (CPU throttle 4x) |
+| `npm run check:pwa` | kiểm tra cài được (PWA) và chạy offline |
 | `npm run deploy` | build rồi `wrangler pages deploy dist` (Phase 5) |

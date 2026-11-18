@@ -175,7 +175,7 @@ function draw({ animateSides = null, boot = false } = {}) {
     screen = 'setup';
     document.body.classList.remove('mode3d');
     scene?.hide();
-    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS) }));
+    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS), canInstall: !!installPrompt }));
     return;
   }
   const animating = !!animateSides;
@@ -239,6 +239,28 @@ function initScene() {
     sceneFailed = true;
   }
 }
+
+// ---------- PWA ----------
+// Service worker only for the deployed https build (not dev: it would fight live reload,
+// not file://: unsupported). index.html works fully without it.
+if (!__DEV__ && 'serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
+}
+// Android/Chrome: offer an "Install app" button when the browser says the app is installable.
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  installPrompt = e;
+  if (screen === 'setup') draw();
+});
+window.addEventListener('appinstalled', () => { installPrompt = null; if (screen === 'setup') draw(); });
+actions.install = async () => {
+  if (!installPrompt) return;
+  installPrompt.prompt();
+  try { await installPrompt.userChoice; } catch { /* dismissed */ }
+  installPrompt = null;
+  if (screen === 'setup') draw();
+};
 
 draw();
 // Initialise Three.js only after the 2D UI has painted.

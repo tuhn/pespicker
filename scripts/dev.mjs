@@ -5,11 +5,13 @@ import os from 'node:os';
 import fs from 'node:fs';
 import path from 'node:path';
 import { buildHtml } from './build.mjs';
+import { buildPwaFiles } from './lib/pwa.mjs';
 import { ROOT } from './lib/paths.mjs';
 
 const PORT = Number(process.env.PORT) || 5173;
 const clients = new Set();
 let html = '';
+let pwa = {}; // manifest + icons (sw.js is served but not registered in dev)
 let lastError = null;
 
 const RELOAD = `<script>(()=>{const s=new EventSource('/__reload');s.onmessage=()=>location.reload();})();</script>`;
@@ -18,6 +20,7 @@ async function rebuild() {
   const t = Date.now();
   try {
     html = (await buildHtml({ dev: true })).replace('</body>', `${RELOAD}</body>`);
+    if (!Object.keys(pwa).length) pwa = (await buildPwaFiles(html)).files;
     lastError = null;
     console.log(`built in ${Date.now() - t} ms`);
   } catch (e) {
@@ -40,6 +43,12 @@ http.createServer((req, res) => {
     clients.add(res);
     req.on('close', () => clients.delete(res));
     return;
+  }
+  const rel = decodeURIComponent(req.url.split('?')[0]).replace(/^\//, '');
+  if (pwa[rel] != null) {
+    const type = rel.endsWith('.png') ? 'image/png' : rel.endsWith('.webmanifest') ? 'application/manifest+json' : rel.endsWith('.js') ? 'text/javascript' : 'text/plain';
+    res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store' });
+    return res.end(pwa[rel]);
   }
   if (lastError) {
     res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });

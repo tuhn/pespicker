@@ -8,6 +8,7 @@ import path from 'node:path';
 import * as esbuild from 'esbuild';
 import { pathToFileURL } from 'node:url';
 import { ROOT, ASSETS_DIR, loadTeams } from './lib/paths.mjs';
+import { buildPwaFiles } from './lib/pwa.mjs';
 
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
@@ -91,6 +92,7 @@ export async function buildHtml({ dev = false } = {}) {
 
 export async function build() {
   const html = await buildHtml();
+  fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
   const out = path.join(DIST, 'index.html');
   fs.writeFileSync(out, html);
@@ -98,6 +100,16 @@ export async function build() {
   const pct = ((bytes / BUDGET) * 100).toFixed(0);
   console.log(`dist/index.html  ${(bytes / 1024).toFixed(1)} KB  (${pct}% of 3 MB budget)`);
   if (bytes > BUDGET) { console.error('Over the 3 MB budget!'); process.exitCode = 1; }
+  // PWA sidecar files (only used when served over https; index.html works without them).
+  const { files, version } = await buildPwaFiles(html);
+  let extra = 0;
+  for (const [rel, data] of Object.entries(files)) {
+    const f = path.join(DIST, rel);
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    fs.writeFileSync(f, data);
+    extra += Buffer.byteLength(data);
+  }
+  console.log(`PWA files        ${(extra / 1024).toFixed(1)} KB  (${Object.keys(files).length} files, cache ${version})`);
   return out;
 }
 
