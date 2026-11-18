@@ -81,8 +81,8 @@
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "ec": {
-      "file": "flags/ec.svg",
-      "bytes": 28156,
+      "file": "flags/ec.webp",
+      "bytes": 11466,
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "eg": {
@@ -91,8 +91,8 @@
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "es": {
-      "file": "flags/es.svg",
-      "bytes": 79311,
+      "file": "flags/es.webp",
+      "bytes": 4412,
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "fr": {
@@ -121,8 +121,8 @@
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "hr": {
-      "file": "flags/hr.svg",
-      "bytes": 30458,
+      "file": "flags/hr.webp",
+      "bytes": 5020,
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "ht": {
@@ -171,8 +171,8 @@
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "mx": {
-      "file": "flags/mx.svg",
-      "bytes": 83544,
+      "file": "flags/mx.webp",
+      "bytes": 3348,
       "source": "flag-icons@7.6.0 (MIT)"
     },
     "nl": {
@@ -295,43 +295,50 @@
     },
     "liverpool": {
       "article": "https://en.wikipedia.org/wiki/Liverpool_F.C.",
-      "file": null,
+      "file": "logos/liverpool.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Liverpool_FC.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 359 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 7690
     },
     "barcelona": {
       "article": "https://en.wikipedia.org/wiki/FC_Barcelona",
-      "file": null,
+      "file": "logos/barcelona.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg",
       "license": "PD",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 7016
     },
     "real-madrid": {
       "article": "https://en.wikipedia.org/wiki/Real_Madrid_CF",
-      "file": null,
+      "file": "logos/real-madrid.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Real_Madrid_CF.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 26 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 8650
     },
     "villarreal": {
       "article": "https://en.wikipedia.org/wiki/Villarreal_CF",
-      "file": null,
+      "file": "logos/villarreal.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/b/b9/Villarreal_CF_logo-en.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Villarreal_CF_logo-en.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/b/b9/Villarreal_CF_logo-en.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 6631
     },
     "atletico-madrid": {
       "article": "https://en.wikipedia.org/wiki/Atl%C3%A9tico_Madrid",
-      "file": null,
+      "file": "logos/atletico-madrid.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/f/f9/Atletico_Madrid_Logo_2024.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Atletico_Madrid_Logo_2024.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/f/f9/Atletico_Madrid_Logo_2024.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 3723
     },
     "real-betis": {
       "article": "https://en.wikipedia.org/wiki/Real_Betis",
@@ -355,35 +362,39 @@
     "lens": {
       "article": "https://en.wikipedia.org/wiki/RC_Lens",
       "file": "logos/lens.webp",
-      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Stade_Bollaert_Delelis.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
-      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Stade_Bollaert_Delelis.JPG",
-      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/c/cc/RC_Lens_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionUrl": "https://en.wikipedia.org/wiki/File:RC_Lens_logo.svg",
+      "license": "Fair use",
+      "note": "SVG 30 KB sau svgo, đổi sang WebP",
       "format": "webp",
-      "bytes": 4064
+      "bytes": 5076
     },
     "lille": {
       "article": "https://en.wikipedia.org/wiki/Lille_OSC",
-      "file": null,
+      "file": "logos/lille.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/3/3f/Lille_OSC_2018_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Lille_OSC_2018_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/3/3f/Lille_OSC_2018_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 5111
     },
     "lyon": {
       "article": "https://en.wikipedia.org/wiki/Olympique_Lyonnais",
-      "file": null,
+      "file": "logos/lyon.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/Olympique_Lyonnais_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Olympique_Lyonnais_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/1/1c/Olympique_Lyonnais_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 7066
     },
     "marseille": {
       "article": "https://en.wikipedia.org/wiki/Olympique_de_Marseille",
-      "file": null,
+      "file": "logos/marseille.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Olympique_de_Marseille_2026_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Olympique_de_Marseille_2026_logo.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/4/4f/Olympique_de_Marseille_2026_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 3862
     },
     "bayern-munich": {
       "article": "https://en.wikipedia.org/wiki/FC_Bayern_Munich",
@@ -396,43 +407,48 @@
     },
     "borussia-dortmund": {
       "article": "https://en.wikipedia.org/wiki/Borussia_Dortmund",
-      "file": null,
+      "file": "logos/borussia-dortmund.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Borussia_Dortmund_logo.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 2153
     },
     "rb-leipzig": {
       "article": "https://en.wikipedia.org/wiki/RB_Leipzig",
-      "file": null,
+      "file": "logos/rb-leipzig.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:RB_Leipzig_2014_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 11568
     },
     "vfb-stuttgart": {
       "article": "https://en.wikipedia.org/wiki/VfB_Stuttgart",
-      "file": null,
+      "file": "logos/vfb-stuttgart.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/VfB_Stuttgart_1893_Logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:VfB_Stuttgart_1893_Logo.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/e/eb/VfB_Stuttgart_1893_Logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 7038
     },
     "hoffenheim": {
       "article": "https://en.wikipedia.org/wiki/TSG_1899_Hoffenheim",
-      "file": null,
+      "file": "logos/hoffenheim.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_TSG_Hoffenheim.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Logo_TSG_Hoffenheim.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_TSG_Hoffenheim.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 7159
     },
     "inter": {
       "article": "https://en.wikipedia.org/wiki/Inter_Milan",
-      "file": null,
+      "file": "logos/inter.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:FC_Internazionale_Milano_2021.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 959
     },
     "napoli": {
       "article": "https://en.wikipedia.org/wiki/SSC_Napoli",
@@ -445,59 +461,69 @@
     },
     "roma": {
       "article": "https://en.wikipedia.org/wiki/AS_Roma",
-      "file": null,
+      "file": "logos/roma.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/f/f7/AS_Roma_logo_%282017%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:AS_Roma_logo_(2017).svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/f/f7/AS_Roma_logo_%282017%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 29 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 4636
     },
     "como": {
       "article": "https://en.wikipedia.org/wiki/Como_1907",
-      "file": null,
+      "file": "logos/como.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Calcio_Como_-_logo_%28Italy%2C_2019-%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Calcio_Como_-_logo_(Italy,_2019-).svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/9/99/Calcio_Como_-_logo_%28Italy%2C_2019-%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 6102
     },
     "ac-milan": {
       "article": "https://en.wikipedia.org/wiki/AC_Milan",
-      "file": null,
+      "file": "logos/ac-milan.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Logo_of_AC_Milan.svg",
       "license": "Public domain",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 4586
     },
     "tottenham-hotspur": {
       "article": "https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C.",
-      "file": null,
+      "file": "logos/tottenham-hotspur.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Tottenham_Hotspur.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 8105
     },
     "chelsea": {
       "article": "https://en.wikipedia.org/wiki/Chelsea_F.C.",
-      "file": null,
+      "file": "logos/chelsea.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Chelsea_FC.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 39 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 10926
     },
     "sporting-cp": {
       "article": "https://en.wikipedia.org/wiki/Sporting_CP",
-      "file": null,
+      "file": "logos/sporting-cp.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/9/97/Sporting_Clube_de_Portugal_logo_%282026%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Sporting_Clube_de_Portugal_logo_(2026).svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/9/97/Sporting_Clube_de_Portugal_logo_%282026%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 9869
     },
     "newcastle-united": {
       "article": "https://en.wikipedia.org/wiki/Newcastle_United_F.C.",
-      "file": null,
+      "file": "logos/newcastle-united.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/8/87/Newcastle_United_FC_2026_crest.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Newcastle_United_FC_2026_crest.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/8/87/Newcastle_United_FC_2026_crest.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 64 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 11104
     },
     "juventus": {
       "article": "https://en.wikipedia.org/wiki/Juventus_FC",
@@ -510,43 +536,50 @@
     },
     "atalanta": {
       "article": "https://en.wikipedia.org/wiki/Atalanta_BC",
-      "file": null,
+      "file": "logos/atalanta.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/f/f2/Atalanta_BC_new_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Atalanta_BC_new_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/f/f2/Atalanta_BC_new_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 9983
     },
     "bayer-leverkusen": {
       "article": "https://en.wikipedia.org/wiki/Bayer_04_Leverkusen",
-      "file": null,
+      "file": "logos/bayer-leverkusen.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/5/59/Bayer_04_Leverkusen_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Bayer_04_Leverkusen_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/5/59/Bayer_04_Leverkusen_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 25 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 6464
     },
     "olympiacos": {
       "article": "https://en.wikipedia.org/wiki/Olympiacos_F.C.",
-      "file": null,
+      "file": "logos/olympiacos.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/a/a2/Olympiacos_FC_crest.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Olympiacos_FC_crest.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/a/a2/Olympiacos_FC_crest.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 12616
     },
     "club-brugge": {
       "article": "https://en.wikipedia.org/wiki/Club_Brugge_KV",
-      "file": null,
+      "file": "logos/club-brugge.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/d/d0/Club_Brugge_KV_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:Club_Brugge_KV_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/d/d0/Club_Brugge_KV_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 101 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 9280
     },
     "galatasaray": {
       "article": "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)",
-      "file": null,
+      "file": "logos/galatasaray.svg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/07/Galatasaray_S.K._Logo_2026_5-stars.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Galatasaray_S.K._Logo_2026_5-stars.svg",
       "license": "CC0",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/commons/0/07/Galatasaray_S.K._Logo_2026_5-stars.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "format": "svg",
+      "bytes": 3077
     },
     "monaco": {
       "article": "https://en.wikipedia.org/wiki/AS_Monaco_FC",
@@ -559,15 +592,17 @@
     },
     "benfica": {
       "article": "https://en.wikipedia.org/wiki/S.L._Benfica",
-      "file": null,
+      "file": "logos/benfica.webp",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
       "descriptionUrl": "https://en.wikipedia.org/wiki/File:SL_Benfica_logo.svg",
       "license": "Fair use",
-      "error": "HTTP 429 https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+      "note": "SVG 62 KB sau svgo, đổi sang WebP",
+      "format": "webp",
+      "bytes": 7290
     }
   },
   "totals": {
-    "flags": 320707,
-    "logos": 98337
+    "flags": 123484,
+    "logos": 282013
   }
 }

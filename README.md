@@ -72,7 +72,7 @@ npm run fetch:assets
 - Cờ lấy từ package `flag-icons`, tối ưu bằng svgo. Cờ có quốc huy chi tiết (> 16 KB) được đổi sang WebP 320×240.
 - Logo CLB lấy ảnh đầu bài Wikipedia (`sourceAliases.wikipedia`), tối ưu SVG. SVG còn > 24 KB hoặc gốc là ảnh raster thì đổi sang WebP 128px.
 - Nguồn từng logo ghi trong `ASSET_SOURCES.md`. CLB tải lỗi sẽ có `logo: null` và app hiện badge monogram.
-- Wikimedia có giới hạn tốc độ (HTTP 429), script tự chờ và thử lại nên lần chạy đầu mất vài phút.
+- Theo chính sách User-Agent của Wikimedia, script gửi kèm email liên hệ (mặc định `dev@tuhoang.app`, đổi bằng biến môi trường `WIKIMEDIA_CONTACT`). Không có thông tin liên hệ thì Wikimedia giới hạn rất chặt (HTTP 429, chờ 120s mỗi lần). Script vẫn tự chờ và thử lại nếu bị 429.
 
 ### Sửa `overrides.json`
 
@@ -182,7 +182,7 @@ Tổng màn Draw (boot + 2 card + clash) mặc định khoảng 5.9s, nằm tron
 ## 7. Xử lý sự cố
 
 - **`fetch:ratings` báo bị chặn:** chạy lại (không thêm `--headless`), bấm qua ô xác minh Cloudflare trong cửa sổ Chrome nếu có. Vẫn không được thì dùng CSV (mục 3).
-- **`fetch:assets` báo HTTP 429:** Wikimedia đang giới hạn tốc độ. Chạy lại sau vài phút, file đã tải được cache trong `.cache/assets/`.
+- **`fetch:assets` báo HTTP 429:** Wikimedia đang giới hạn tốc độ. Kiểm tra `WIKIMEDIA_CONTACT` là email thật, chạy lại sau vài phút. File đã tải được cache trong `.cache/assets/`.
 
 - **localStorage bị xoá / chế độ ẩn danh:** app vẫn chạy bằng state trong bộ nhớ, chỉ mất tên người chơi, tuỳ chọn và lịch sử. Không cần làm gì.
 - **Logo không hiện:** CLB có `logo: null` trong `teams.json` sẽ hiện badge chữ viết tắt. Chạy lại `npm run fetch:assets`, xem cột lỗi trong `ASSET_SOURCES.md`. Muốn tắt hẳn logo: `SHOW_CLUB_LOGOS = false`.

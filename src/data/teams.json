@@ -1212,7 +1212,7 @@
       "Premier League top 5"
     ],
     "flagIso": "gb-eng",
-    "logo": null,
+    "logo": "logos/liverpool.webp",
     "colors": [
       "#C8102E",
       "#00B2A9"
@@ -1235,7 +1235,7 @@
       "La Liga top 5"
     ],
     "flagIso": "es",
-    "logo": null,
+    "logo": "logos/barcelona.svg",
     "colors": [
       "#A50044",
       "#004D98"
@@ -1258,7 +1258,7 @@
       "La Liga top 5"
     ],
     "flagIso": "es",
-    "logo": null,
+    "logo": "logos/real-madrid.webp",
     "colors": [
       "#FFFFFF",
       "#FEBE10"
@@ -1281,7 +1281,7 @@
       "La Liga top 5"
     ],
     "flagIso": "es",
-    "logo": null,
+    "logo": "logos/villarreal.svg",
     "colors": [
       "#FFE667",
       "#005187"
@@ -1304,7 +1304,7 @@
       "La Liga top 5"
     ],
     "flagIso": "es",
-    "logo": null,
+    "logo": "logos/atletico-madrid.svg",
     "colors": [
       "#CB3524",
       "#272E61"
@@ -1396,7 +1396,7 @@
       "Ligue 1 top 5"
     ],
     "flagIso": "fr",
-    "logo": null,
+    "logo": "logos/lille.svg",
     "colors": [
       "#E01E13",
       "#1B3A6B"
@@ -1419,7 +1419,7 @@
       "Ligue 1 top 5"
     ],
     "flagIso": "fr",
-    "logo": null,
+    "logo": "logos/lyon.svg",
     "colors": [
       "#FFFFFF",
       "#DA001A"
@@ -1442,7 +1442,7 @@
       "Ligue 1 top 5"
     ],
     "flagIso": "fr",
-    "logo": null,
+    "logo": "logos/marseille.svg",
     "colors": [
       "#FFFFFF",
       "#2FAEE0"
@@ -1488,7 +1488,7 @@
       "Bundesliga top 5"
     ],
     "flagIso": "de",
-    "logo": null,
+    "logo": "logos/borussia-dortmund.svg",
     "colors": [
       "#FDE100",
       "#000000"
@@ -1511,7 +1511,7 @@
       "Bundesliga top 5"
     ],
     "flagIso": "de",
-    "logo": null,
+    "logo": "logos/rb-leipzig.svg",
     "colors": [
       "#FFFFFF",
       "#DD0741"
@@ -1534,7 +1534,7 @@
       "Bundesliga top 5"
     ],
     "flagIso": "de",
-    "logo": null,
+    "logo": "logos/vfb-stuttgart.svg",
     "colors": [
       "#FFFFFF",
       "#E32219"
@@ -1557,7 +1557,7 @@
       "Bundesliga top 5"
     ],
     "flagIso": "de",
-    "logo": null,
+    "logo": "logos/hoffenheim.svg",
     "colors": [
       "#1961B5",
       "#FFFFFF"
@@ -1580,7 +1580,7 @@
       "Serie A top 5"
     ],
     "flagIso": "it",
-    "logo": null,
+    "logo": "logos/inter.svg",
     "colors": [
       "#0068A8",
       "#000000"
@@ -1626,7 +1626,7 @@
       "Serie A top 5"
     ],
     "flagIso": "it",
-    "logo": null,
+    "logo": "logos/roma.webp",
     "colors": [
       "#8E1F2F",
       "#F0BC42"
@@ -1649,7 +1649,7 @@
       "Serie A top 5"
     ],
     "flagIso": "it",
-    "logo": null,
+    "logo": "logos/como.svg",
     "colors": [
       "#1F4E9B",
       "#FFFFFF"
@@ -1672,7 +1672,7 @@
       "Serie A top 5"
     ],
     "flagIso": "it",
-    "logo": null,
+    "logo": "logos/ac-milan.svg",
     "colors": [
       "#FB090B",
       "#000000"
@@ -1695,7 +1695,7 @@
       "Champions League knockout"
     ],
     "flagIso": "gb-eng",
-    "logo": null,
+    "logo": "logos/tottenham-hotspur.svg",
     "colors": [
       "#FFFFFF",
       "#132257"
@@ -1718,7 +1718,7 @@
       "Champions League knockout"
     ],
     "flagIso": "gb-eng",
-    "logo": null,
+    "logo": "logos/chelsea.webp",
     "colors": [
       "#034694",
       "#FFFFFF"
@@ -1741,7 +1741,7 @@
       "Champions League knockout"
     ],
     "flagIso": "pt",
-    "logo": null,
+    "logo": "logos/sporting-cp.svg",
     "colors": [
       "#008057",
       "#FFFFFF"
@@ -1764,7 +1764,7 @@
       "Champions League knockout"
     ],
     "flagIso": "gb-eng",
-    "logo": null,
+    "logo": "logos/newcastle-united.webp",
     "colors": [
       "#241F20",
       "#FFFFFF"
@@ -1810,7 +1810,7 @@
       "Champions League knockout"
     ],
     "flagIso": "it",
-    "logo": null,
+    "logo": "logos/atalanta.svg",
     "colors": [
       "#1E71B8",
       "#000000"
@@ -1833,7 +1833,7 @@
       "Champions League knockout"
     ],
     "flagIso": "de",
-    "logo": null,
+    "logo": "logos/bayer-leverkusen.webp",
     "colors": [
       "#E32221",
       "#000000"
@@ -1856,7 +1856,7 @@
       "Champions League knockout"
     ],
     "flagIso": "gr",
-    "logo": null,
+    "logo": "logos/olympiacos.svg",
     "colors": [
       "#ED1C24",
       "#FFFFFF"
@@ -1879,7 +1879,7 @@
       "Champions League knockout"
     ],
     "flagIso": "be",
-    "logo": null,
+    "logo": "logos/club-brugge.webp",
     "colors": [
       "#0067B1",
       "#000000"
@@ -1902,7 +1902,7 @@
       "Champions League knockout"
     ],
     "flagIso": "tr",
-    "logo": null,
+    "logo": "logos/galatasaray.svg",
     "colors": [
       "#A90432",
       "#FDB912"
@@ -1948,7 +1948,7 @@
       "Champions League knockout"
     ],
     "flagIso": "pt",
-    "logo": null,
+    "logo": "logos/benfica.webp",
     "colors": [
       "#E83030",
       "#FFFFFF"

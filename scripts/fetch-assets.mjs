@@ -18,7 +18,10 @@ import { writeReport } from './lib/report.mjs';
 const SVG_MAX_BYTES = 24 * 1024;
 const FLAG_SVG_MAX_BYTES = 16 * 1024;
 const RASTER_SIZE = 128;
-const UA = 'pespicker-asset-fetcher/1.0 (personal, non-commercial)';
+// Wikimedia's User-Agent policy asks for contact info; anonymous clients get rate limited hard (HTTP 429).
+// Override with WIKIMEDIA_CONTACT=you@example.com.
+const CONTACT = process.env.WIKIMEDIA_CONTACT || 'dev@tuhoang.app';
+const UA = `pespicker-asset-fetcher/1.0 (https://pespicker.tuhoang.app; ${CONTACT}) node-fetch`;
 const API = 'https://en.wikipedia.org/w/api.php';
 const useCache = !process.argv.includes('--no-cache');
 
