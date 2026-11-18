@@ -15,7 +15,7 @@
     "test": "node --test \"test/**/*.test.js\"",
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name pespicker",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name pespicker --branch main",
     "screenshot": "node scripts/screenshot.mjs",
     "preview:assets": "node scripts/preview-assets.mjs",
     "perf": "node scripts/perf.mjs",
@@ -30,6 +30,7 @@
     "flag-icons": "7.6.0",
     "playwright": "1.65.1",
     "sharp": "0.35.5",
-    "svgo": "4.1.0"
+    "svgo": "4.1.0",
+    "wrangler": "4.164.0"
   }
 }
