@@ -371,8 +371,12 @@ export function createScene({ debug = false, onContextLost } = {}) {
     // Redraw: the cards being redrawn still show the previous result. Scan them out and hide them
     // (and the VS badge) BEFORE their textures are replaced, so the new team is never visible
     // until its own reveal.
-    const outgoing = cards.filter((c) => animateSides[c.side] && c.pivot.visible);
-    if (outgoing.length || vs.visible) {
+    // Only when the scene is already on screen (Redraw). Coming back from Setup the canvas is hidden
+    // and the render loop stopped, so a scan-out would never advance.
+    const wasShown = shown;
+    show();
+    const outgoing = wasShown ? cards.filter((c) => animateSides[c.side] && c.pivot.visible) : [];
+    if (outgoing.length || (wasShown && vs.visible)) {
       const out = new Timeline();
       timeline = out;
       out.add(0, 220, (k) => {
@@ -584,7 +588,10 @@ export function createScene({ debug = false, onContextLost } = {}) {
     shown = false;
     stop();
     timeline?.skip();
+    timeline = null;
     canvas.style.visibility = 'hidden';
+    for (const c of cards) { c.pivot.visible = false; c.settled = false; c.trail.visible = false; }
+    vs.visible = false;
     for (const c of cards) { c.zoomTo = c.zoom = 0; }
   }
 

@@ -71,6 +71,17 @@ for (const [variant, q] of variants) {
     await page.click('button[aria-label="History"]');
     await page.waitForTimeout(250);
     await shot('9-history');
+    // Regression: Back to Setup, then Draw again must play the full sequence and reach the results.
+    await page.keyboard.press('Escape');
+    await page.click('button[aria-label="Back to setup"]');
+    await page.waitForSelector('#draw-btn');
+    await page.click('#draw-btn');
+    await page.waitForTimeout(1900);
+    await shot('10-draw-again-reveal');
+    const reached = await page.waitForSelector('#redraw-btn', { timeout: 20000 }).then(() => true, () => false);
+    if (!reached) problems.push(`${variant} ${w}: draw after Back never reached the results (animation stuck)`);
+    await page.waitForTimeout(400);
+    await shot('11-draw-again-results');
     await ctx.close();
   }
 }

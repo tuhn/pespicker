@@ -308,5 +308,9 @@ table.scale th { text-align: left; color: var(--muted); font-size: 11px; letter-
 table.scale td { padding: 7px 4px; border-bottom: 1px solid rgba(31,61,48,0.6); --tier: var(--lime); }
 table.scale td:nth-child(2), table.scale td:nth-child(3), table.scale th:nth-child(2), table.scale th:nth-child(3) { text-align: right; }
 
-.brand-actions { display: flex; align-items: center; gap: 2px; }
-.install-btn { color: var(--cyan); }
+.install-link { justify-self: center; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px;
+  border: 0; background: none; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+.install-link svg { width: 15px; height: 15px; color: var(--cyan); }
+.install-link:active { color: var(--text); }
+
+.screen.setup { padding-bottom: calc(140px + var(--safe-b)); }

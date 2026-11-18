@@ -75,6 +75,7 @@ export const S = {
   starsAria: (s) => `${s} stars`,
 
   install: 'Install app',
+  installIOS: 'To install: tap Share, then "Add to Home Screen".',
   history: 'History',
   historyEmpty: 'No draws yet.',
   historyClear: 'Clear history',

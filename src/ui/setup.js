@@ -52,15 +52,15 @@ export function renderSetup(ctx) {
   const historyBtn = h('button', { type: 'button', class: 'btn-ghost', onclick: actions.openHistory, 'aria-label': `${S.history} (${state.history.length})` },
     h('span', { html: ICONS.history, style: { display: 'inline-flex', width: '18px' } }), S.history, h('span', { class: 'num' }, state.history.length ? `(${state.history.length})` : ''));
 
-  const installBtn = h('button', { type: 'button', class: 'btn-ghost install-btn', onclick: actions.install, html: ICONS.download });
-  installBtn.append(S.install);
+  // Small footer action under "Draw teams": only when the app can be installed (Chrome prompt) or on
+  // iOS Safari (manual Add to Home Screen); hidden once running as an installed app.
+  const installBtn = ctx.installMode ? h('button', { type: 'button', class: 'install-link', onclick: actions.install, html: ICONS.download }) : null;
+  installBtn?.append(S.install);
 
   return h('main', { class: 'screen setup' },
     h('header', { class: 'brand' },
       h('div', null, h('h1', null, S.appTitle), h('p', null, S.appTagline)),
-      h('div', { class: 'brand-actions' },
-        ctx.canInstall ? installBtn : null,
-        historyBtn)),
+      historyBtn),
     h('section', { class: 'panel', 'aria-labelledby': 'pool-t' },
       h('h2', { class: 'panel-title', id: 'pool-t' }, S.pool, h('span', { class: 'num' }, S.ratedCount(stats.rated, stats.total))),
       tabs),
@@ -75,7 +75,8 @@ export function renderSetup(ctx) {
       sw(S.allowMirror, S.allowMirrorHelp, state.allowMirror, actions.setMirror),
       sw(S.reduceEffects, S.reduceEffectsHelp, state.reduceEffects, actions.setReduce)),
     h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
-      h('button', { type: 'button', class: 'btn-primary', id: 'draw-btn', onclick: actions.draw }, S.drawTeams))));
+      h('button', { type: 'button', class: 'btn-primary', id: 'draw-btn', onclick: actions.draw }, S.drawTeams),
+      installBtn)));
 }
 
 /** Arrow-key navigation for tablists / radiogroups. */

@@ -175,7 +175,7 @@ function draw({ animateSides = null, boot = false } = {}) {
     screen = 'setup';
     document.body.classList.remove('mode3d');
     scene?.hide();
-    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS), canInstall: !!installPrompt }));
+    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS), installMode: installMode() }));
     return;
   }
   const animating = !!animateSides;
@@ -254,12 +254,26 @@ window.addEventListener('beforeinstallprompt', (e) => {
   if (screen === 'setup') draw();
 });
 window.addEventListener('appinstalled', () => { installPrompt = null; if (screen === 'setup') draw(); });
+const isStandalone = () => {
+  try { return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch { return false; }
+};
+// iPhone/iPad Safari has no install prompt: show the manual steps instead.
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+function installMode() {
+  if (isStandalone() || !/^https?:$/.test(location.protocol)) return null;
+  if (installPrompt) return 'prompt';
+  if (isIOS) return 'ios';
+  return null;
+}
 actions.install = async () => {
-  if (!installPrompt) return;
-  installPrompt.prompt();
-  try { await installPrompt.userChoice; } catch { /* dismissed */ }
-  installPrompt = null;
-  if (screen === 'setup') draw();
+  if (installPrompt) {
+    installPrompt.prompt();
+    try { await installPrompt.userChoice; } catch { /* dismissed */ }
+    installPrompt = null;
+    if (screen === 'setup') draw();
+  } else if (isIOS) {
+    toast(S.installIOS, 'info');
+  }
 };
 
 draw();
