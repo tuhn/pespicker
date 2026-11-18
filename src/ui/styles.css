@@ -290,3 +290,13 @@ body.mode3d .app { background: transparent; }
 .match3d.zoomed .side-info, .match3d.zoomed .clash3d, .match3d.zoomed .hint, .match3d.zoomed .match-top { opacity: 0; visibility: hidden; }
 .zoom-catcher { position: fixed; inset: 0; z-index: 30; border: 0; background: transparent; touch-action: none; }
 .debug-hud { position: fixed; left: 8px; top: calc(8px + var(--safe-t)); z-index: 50; margin: 0; padding: 6px 8px; font: 11px/1.35 ui-monospace, Consolas, monospace; color: #c8ff53; background: rgba(0,0,0,0.65); border-radius: 6px; pointer-events: none; white-space: pre; }
+
+/* ---------- star scale ---------- */
+.panel-title-text { margin: 0; font: inherit; letter-spacing: inherit; color: inherit; }
+.link-btn { border: 0; background: none; color: var(--cyan); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; text-transform: none; min-height: 32px; padding: 0 2px; text-decoration: underline; text-underline-offset: 3px; }
+.scale-line { margin-top: 4px; color: var(--muted); }
+.scale-body { padding: 4px 16px calc(16px + var(--safe-b)); }
+table.scale { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 14px; }
+table.scale th { text-align: left; color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+table.scale td { padding: 7px 4px; border-bottom: 1px solid rgba(31,61,48,0.6); --tier: var(--lime); }
+table.scale td:nth-child(2), table.scale td:nth-child(3), table.scale th:nth-child(2), table.scale th:nth-child(3) { text-align: right; }

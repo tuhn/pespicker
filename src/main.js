@@ -20,6 +20,7 @@ import { S } from './ui/strings.js';
 import { renderSetup } from './ui/setup.js';
 import { renderMatch, renderMatch3D } from './ui/results.js';
 import { openHistory } from './ui/history.js';
+import { openStarScale, scaleSummary } from './ui/starScale.js';
 import { play2D, prefersReducedMotion } from './ui/fallback2d.js';
 import { createScene, hasWebGL } from './scene/index.js';
 
@@ -66,6 +67,7 @@ const actions = {
   lock: (side) => update(St.toggleLock(state, side)),
   copy: () => copyResult(),
   share: () => shareResult(),
+  openStarScale: () => openStarScale({ thresholds: STAR_THRESHOLDS, pool: pools[state.mode], mode: state.mode }),
   openHistory: () => openHistory({ history: state.history, teamName: (id) => byId.get(id)?.name || id, onClear: () => update(St.clearHistory(state)) }),
   skip: () => sequence?.skip(),
   speedUp: () => sequence?.speedUp(),
@@ -173,7 +175,7 @@ function draw({ animateSides = null, boot = false } = {}) {
     screen = 'setup';
     document.body.classList.remove('mode3d');
     scene?.hide();
-    root.append(renderSetup({ state, poolStats, actions }));
+    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS) }));
     return;
   }
   const animating = !!animateSides;

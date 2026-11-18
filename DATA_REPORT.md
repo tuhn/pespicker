@@ -1,6 +1,6 @@
 # DATA_REPORT
 
-Sinh tự động bởi `npm run fetch:ratings` / `npm run report`. Lần chạy: 2026-11-18T10:27:40.274Z.
+Sinh tự động bởi `npm run fetch:ratings` / `npm run report`. Lần chạy: 2026-11-18T10:40:42.912Z.
 
 - Nguồn chính: fifaindex.com, bản **FC27**. Dữ liệu fifaindex lấy lúc: 2026-11-18T09:18:32.010Z → 2026-11-18T09:24:39.475Z.
 - Elo: eloratings.net (World.tsv), lấy lúc 2026-11-18T09:17:44.521Z.
@@ -25,7 +25,7 @@ OVR tối thiểu cho từng mức (dưới mức 1.5★ là 1★). Club và tuy
 | Mức | 1.5★ | 2★ | 2.5★ | 3★ | 3.5★ | 4★ | 4.5★ | 5★ |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Quantile (gợi ý) | 73 | 76 | 77 | 78 | 79 | 80 | 82 | 84 |
-| Đang dùng (config.js) | 73 | 76 | 77 | 78 | 79 | 80 | 82 | 84 |
+| Đang dùng (config.js) | 70 | 72 | 74 | 76 | 78 | 80 | 82 | 84 |
 
 ## Phân bố số đội theo mức sao
 
@@ -34,15 +34,17 @@ OVR tối thiểu cho từng mức (dưới mức 1.5★ là 1★). Club và tuy
 | 5★ | 6 | 6 | 12 |
 | 4.5★ | 2 | 4 | 6 |
 | 4★ | 2 | 7 | 9 |
-| 3.5★ | 5 | 8 | 13 |
-| 3★ | 5 | 3 | 8 |
-| 2.5★ | 3 | 5 | 8 |
-| 2★ | 7 | 3 | 10 |
-| 1.5★ | 9 | 1 | 10 |
-| 1★ | 9 | 0 | 9 |
+| 3.5★ | 10 | 11 | 21 |
+| 3★ | 10 | 8 | 18 |
+| 2.5★ | 8 | 1 | 9 |
+| 2★ | 6 | 0 | 6 |
+| 1.5★ | 3 | 0 | 3 |
+| 1★ | 1 | 0 | 1 |
 | null | 0 | 0 | 0 |
 
-- Clubs: mức 1.5★ chỉ có 1 đội, "Same tier" sẽ không chọn mức này.
+- National: mức 1★ chỉ có 1 đội, "Same tier" sẽ không chọn mức này.
+- Clubs: mức 2.5★ chỉ có 1 đội, "Same tier" sẽ không chọn mức này.
+- Mixed: mức 1★ chỉ có 1 đội, "Same tier" sẽ không chọn mức này.
 
 ## Quy đổi Elo sang OVR
 
@@ -131,38 +133,38 @@ Tuyển được quy đổi (hiện nhãn "est." trong app):
 | Norway | 79 | 80 | 81 | 76 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1352-norway) |  |
 | Switzerland | 79 | 77 | 78 | 78 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1364-switzerland) |  |
 | Türkiye | 79 | 79 | 81 | 79 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1365-turkiye) |  |
-| United States | 78 | 78 | 78 | 78 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1387-united-states) |  |
-| Ecuador | 78 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Colombia | 78 | 80 | 79 | 78 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/111109-colombia) |  |
-| Austria | 78 | 76 | 78 | 79 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1322-austria-national-team) | Austria (National team) |
-| Sweden | 78 | 83 | 75 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1363-sweden) |  |
-| Mexico | 77 | 79 | 76 | 75 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/1386-mexico) |  |
-| Senegal | 77 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Japan | 77 | 78 | 78 | 77 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/1411-japan) |  |
-| Canada | 76 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Paraguay | 76 | 76 | 75 | 75 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/1375-paraguay) |  |
-| Côte d'Ivoire | 76 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Iran | 76 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| South Korea | 76 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Scotland | 76 | 77 | 77 | 75 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/1359-scotland) |  |
-| Czechia | 76 | 75 | 75 | 76 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/1330-czechia) |  |
-| Algeria | 75 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Ghana | 75 | 68 | 76 | 73 | 1.5 | [fifaindex-fc27](https://fifaindex.com/teams/111462-ghana) |  |
-| DR Congo | 75 | 77 | 73 | 74 | 1.5 | [fifaindex-fc27](https://fifaindex.com/teams/111545-congo-dr) | Congo DR |
-| Bosnia and Herzegovina | 75 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Panama | 74 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Egypt | 74 | 76 | 75 | 72 | 1.5 | [fifaindex-fc27](https://fifaindex.com/teams/111130-egypt) |  |
-| Uzbekistan | 74 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Jordan | 74 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| South Africa | 73 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Haiti | 72 est. | — | — | — | 1 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Cape Verde | 72 est. | — | — | — | 1 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Australia | 72 | 71 | 69 | 72 | 1 | [fifaindex-fc27](https://fifaindex.com/teams/1415-australia) |  |
-| Saudi Arabia | 72 | 73 | 73 | 72 | 1 | [fifaindex-fc27](https://fifaindex.com/teams/111114-saudi-arabia) |  |
-| Iraq | 72 est. | — | — | — | 1 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Curaçao | 71 est. | — | — | — | 1 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| Tunisia | 71 est. | — | — | — | 1 | [elo-mapped](https://eloratings.net/World.tsv) |  |
-| New Zealand | 70 | 74 | 71 | 69 | 1 | [fifaindex-fc27](https://fifaindex.com/teams/111473-new-zealand) |  |
+| United States | 78 | 78 | 78 | 78 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1387-united-states) |  |
+| Ecuador | 78 est. | — | — | — | 3.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Colombia | 78 | 80 | 79 | 78 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/111109-colombia) |  |
+| Austria | 78 | 76 | 78 | 79 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1322-austria-national-team) | Austria (National team) |
+| Sweden | 78 | 83 | 75 | 77 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1363-sweden) |  |
+| Mexico | 77 | 79 | 76 | 75 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1386-mexico) |  |
+| Senegal | 77 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Japan | 77 | 78 | 78 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1411-japan) |  |
+| Canada | 76 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Paraguay | 76 | 76 | 75 | 75 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1375-paraguay) |  |
+| Côte d'Ivoire | 76 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Iran | 76 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| South Korea | 76 est. | — | — | — | 3 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Scotland | 76 | 77 | 77 | 75 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1359-scotland) |  |
+| Czechia | 76 | 75 | 75 | 76 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1330-czechia) |  |
+| Algeria | 75 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Ghana | 75 | 68 | 76 | 73 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/111462-ghana) |  |
+| DR Congo | 75 | 77 | 73 | 74 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/111545-congo-dr) | Congo DR |
+| Bosnia and Herzegovina | 75 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Panama | 74 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Egypt | 74 | 76 | 75 | 72 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/111130-egypt) |  |
+| Uzbekistan | 74 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Jordan | 74 est. | — | — | — | 2.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| South Africa | 73 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Haiti | 72 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Cape Verde | 72 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Australia | 72 | 71 | 69 | 72 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/1415-australia) |  |
+| Saudi Arabia | 72 | 73 | 73 | 72 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/111114-saudi-arabia) |  |
+| Iraq | 72 est. | — | — | — | 2 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Curaçao | 71 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| Tunisia | 71 est. | — | — | — | 1.5 | [elo-mapped](https://eloratings.net/World.tsv) |  |
+| New Zealand | 70 | 74 | 71 | 69 | 1.5 | [fifaindex-fc27](https://fifaindex.com/teams/111473-new-zealand) |  |
 | Qatar | 69 | 74 | 67 | 66 | 1 | [fifaindex-fc27](https://fifaindex.com/teams/111527-qatar) |  |
 
 ## Rating CLB
@@ -194,18 +196,18 @@ Tuyển được quy đổi (hiện nhãn "est." trong app):
 | Atalanta | 79 | 79 | 78 | 77 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/115845-atalanta) |  |
 | Bayer Leverkusen | 79 | 80 | 79 | 79 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/32-bayer-04-leverkusen) | Bayer 04 Leverkusen |
 | Galatasaray | 79 | 85 | 79 | 78 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/325-galatasaray) |  |
-| VfB Stuttgart | 78 | 77 | 79 | 78 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/36-vfb-stuttgart) |  |
-| Como | 78 | 80 | 78 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/1745-como) |  |
-| Benfica | 78 | 80 | 79 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/234-benfica) |  |
-| Lyon | 77 | 75 | 77 | 76 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/66-olympique-lyonnais) | Olympique Lyonnais |
-| Hoffenheim | 77 | 77 | 77 | 76 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/10029-tsg-1899-hoffenheim) | TSG 1899 Hoffenheim |
-| Sporting CP | 77 | 79 | 75 | 78 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/237-sporting-cp) |  |
-| Olympiacos | 77 | 80 | 77 | 74 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/280-olympiacos) |  |
-| Monaco | 77 | 75 | 77 | 75 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/69-as-monaco) | AS Monaco |
-| Lens | 76 | 78 | 75 | 77 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/64-rc-lens) | RC Lens |
-| Lille | 76 | 77 | 76 | 77 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/65-losc-lille) | LOSC Lille |
-| Marseille | 76 | 77 | 76 | 76 | 2 | [fifaindex-fc27](https://fifaindex.com/teams/219-olympique-de-marseille) | Olympique de Marseille |
-| Club Brugge | 74 | 74 | 71 | 72 | 1.5 | [fifaindex-fc27](https://fifaindex.com/teams/231-club-brugge) |  |
+| VfB Stuttgart | 78 | 77 | 79 | 78 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/36-vfb-stuttgart) |  |
+| Como | 78 | 80 | 78 | 77 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/1745-como) |  |
+| Benfica | 78 | 80 | 79 | 77 | 3.5 | [fifaindex-fc27](https://fifaindex.com/teams/234-benfica) |  |
+| Lyon | 77 | 75 | 77 | 76 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/66-olympique-lyonnais) | Olympique Lyonnais |
+| Hoffenheim | 77 | 77 | 77 | 76 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/10029-tsg-1899-hoffenheim) | TSG 1899 Hoffenheim |
+| Sporting CP | 77 | 79 | 75 | 78 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/237-sporting-cp) |  |
+| Olympiacos | 77 | 80 | 77 | 74 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/280-olympiacos) |  |
+| Monaco | 77 | 75 | 77 | 75 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/69-as-monaco) | AS Monaco |
+| Lens | 76 | 78 | 75 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/64-rc-lens) | RC Lens |
+| Lille | 76 | 77 | 76 | 77 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/65-losc-lille) | LOSC Lille |
+| Marseille | 76 | 77 | 76 | 76 | 3 | [fifaindex-fc27](https://fifaindex.com/teams/219-olympique-de-marseille) | Olympique de Marseille |
+| Club Brugge | 74 | 74 | 71 | 72 | 2.5 | [fifaindex-fc27](https://fifaindex.com/teams/231-club-brugge) |  |
 
 ## Logo và cờ
 
