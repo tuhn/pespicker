@@ -1,0 +1,1121 @@
+{
+  "meta": {
+    "fifaindexVersion": "fc27",
+    "generatedAt": "2026-11-18T09:24:39.492Z",
+    "eloRegression": {
+      "a": 40.66735650348439,
+      "b": 0.02030293251063506,
+      "r2": 0.761047720020802,
+      "n": 31,
+      "teams": [
+        {
+          "id": "mexico",
+          "name": "Mexico",
+          "elo": 1841,
+          "ovr": 77
+        },
+        {
+          "id": "united-states",
+          "name": "United States",
+          "elo": 1811,
+          "ovr": 78
+        },
+        {
+          "id": "argentina",
+          "name": "Argentina",
+          "elo": 2158,
+          "ovr": 82
+        },
+        {
+          "id": "brazil",
+          "name": "Brazil",
+          "elo": 1983,
+          "ovr": 84
+        },
+        {
+          "id": "uruguay",
+          "name": "Uruguay",
+          "elo": 1870,
+          "ovr": 79
+        },
+        {
+          "id": "colombia",
+          "name": "Colombia",
+          "elo": 1987,
+          "ovr": 78
+        },
+        {
+          "id": "paraguay",
+          "name": "Paraguay",
+          "elo": 1856,
+          "ovr": 76
+        },
+        {
+          "id": "morocco",
+          "name": "Morocco",
+          "elo": 1899,
+          "ovr": 79
+        },
+        {
+          "id": "egypt",
+          "name": "Egypt",
+          "elo": 1703,
+          "ovr": 74
+        },
+        {
+          "id": "ghana",
+          "name": "Ghana",
+          "elo": 1515,
+          "ovr": 75
+        },
+        {
+          "id": "dr-congo",
+          "name": "DR Congo",
+          "elo": 1675,
+          "ovr": 75
+        },
+        {
+          "id": "japan",
+          "name": "Japan",
+          "elo": 1898,
+          "ovr": 77
+        },
+        {
+          "id": "australia",
+          "name": "Australia",
+          "elo": 1773,
+          "ovr": 72
+        },
+        {
+          "id": "qatar",
+          "name": "Qatar",
+          "elo": 1455,
+          "ovr": 69
+        },
+        {
+          "id": "saudi-arabia",
+          "name": "Saudi Arabia",
+          "elo": 1642,
+          "ovr": 72
+        },
+        {
+          "id": "new-zealand",
+          "name": "New Zealand",
+          "elo": 1563,
+          "ovr": 70
+        },
+        {
+          "id": "england",
+          "name": "England",
+          "elo": 2182,
+          "ovr": 84
+        },
+        {
+          "id": "france",
+          "name": "France",
+          "elo": 2069,
+          "ovr": 86
+        },
+        {
+          "id": "croatia",
+          "name": "Croatia",
+          "elo": 1858,
+          "ovr": 80
+        },
+        {
+          "id": "portugal",
+          "name": "Portugal",
+          "elo": 2005,
+          "ovr": 84
+        },
+        {
+          "id": "norway",
+          "name": "Norway",
+          "elo": 1935,
+          "ovr": 79
+        },
+        {
+          "id": "germany",
+          "name": "Germany",
+          "elo": 1953,
+          "ovr": 84
+        },
+        {
+          "id": "netherlands",
+          "name": "Netherlands",
+          "elo": 1952,
+          "ovr": 82
+        },
+        {
+          "id": "belgium",
+          "name": "Belgium",
+          "elo": 1994,
+          "ovr": 81
+        },
+        {
+          "id": "spain",
+          "name": "Spain",
+          "elo": 2258,
+          "ovr": 86
+        },
+        {
+          "id": "switzerland",
+          "name": "Switzerland",
+          "elo": 1976,
+          "ovr": 79
+        },
+        {
+          "id": "austria",
+          "name": "Austria",
+          "elo": 1838,
+          "ovr": 78
+        },
+        {
+          "id": "scotland",
+          "name": "Scotland",
+          "elo": 1715,
+          "ovr": 76
+        },
+        {
+          "id": "czechia",
+          "name": "Czechia",
+          "elo": 1647,
+          "ovr": 76
+        },
+        {
+          "id": "sweden",
+          "name": "Sweden",
+          "elo": 1783,
+          "ovr": 78
+        },
+        {
+          "id": "turkiye",
+          "name": "Türkiye",
+          "elo": 1750,
+          "ovr": 79
+        }
+      ]
+    },
+    "eloFetchedAt": "2026-11-18T09:17:44.521Z",
+    "elo": {
+      "canada": 1762,
+      "mexico": 1841,
+      "united-states": 1811,
+      "panama": 1661,
+      "haiti": 1545,
+      "curacao": 1484,
+      "argentina": 2158,
+      "brazil": 1983,
+      "ecuador": 1856,
+      "uruguay": 1870,
+      "colombia": 1987,
+      "paraguay": 1856,
+      "morocco": 1899,
+      "tunisia": 1488,
+      "egypt": 1703,
+      "algeria": 1688,
+      "ghana": 1515,
+      "cape-verde": 1521,
+      "south-africa": 1593,
+      "cote-divoire": 1719,
+      "senegal": 1812,
+      "dr-congo": 1675,
+      "japan": 1898,
+      "iran": 1743,
+      "uzbekistan": 1646,
+      "south-korea": 1723,
+      "jordan": 1644,
+      "australia": 1773,
+      "qatar": 1455,
+      "saudi-arabia": 1642,
+      "iraq": 1539,
+      "new-zealand": 1563,
+      "england": 2182,
+      "france": 2069,
+      "croatia": 1858,
+      "portugal": 2005,
+      "norway": 1935,
+      "germany": 1953,
+      "netherlands": 1952,
+      "belgium": 1994,
+      "spain": 2258,
+      "switzerland": 1976,
+      "austria": 1838,
+      "scotland": 1715,
+      "bosnia-and-herzegovina": 1672,
+      "czechia": 1647,
+      "sweden": 1783,
+      "turkiye": 1750
+    },
+    "problems": []
+  },
+  "teams": {
+    "canada": {
+      "ovr": 76,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1762,
+      "eloRank": 29,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "mexico": {
+      "ovr": 77,
+      "att": 79,
+      "mid": 76,
+      "def": 75,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1386-mexico",
+      "sourceName": "Mexico",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "united-states": {
+      "ovr": 78,
+      "att": 78,
+      "mid": 78,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1387-united-states",
+      "sourceName": "United States",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "panama": {
+      "ovr": 74,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1661,
+      "eloRank": 51,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "haiti": {
+      "ovr": 72,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1545,
+      "eloRank": 73,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "curacao": {
+      "ovr": 71,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1484,
+      "eloRank": 85,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "argentina": {
+      "ovr": 82,
+      "att": 86,
+      "mid": 83,
+      "def": 80,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1369-argentina",
+      "sourceName": "Argentina",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "brazil": {
+      "ovr": 84,
+      "att": 86,
+      "mid": 82,
+      "def": 83,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1370-brazil",
+      "sourceName": "Brazil",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "ecuador": {
+      "ovr": 78,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1856,
+      "eloRank": 19,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "uruguay": {
+      "ovr": 79,
+      "att": 76,
+      "mid": 80,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1377-uruguay",
+      "sourceName": "Uruguay",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "colombia": {
+      "ovr": 78,
+      "att": 80,
+      "mid": 79,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111109-colombia",
+      "sourceName": "Colombia",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "paraguay": {
+      "ovr": 76,
+      "att": 76,
+      "mid": 75,
+      "def": 75,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1375-paraguay",
+      "sourceName": "Paraguay",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "morocco": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 79,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111111-morocco",
+      "sourceName": "Morocco",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "tunisia": {
+      "ovr": 71,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1488,
+      "eloRank": 84,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "egypt": {
+      "ovr": 74,
+      "att": 76,
+      "mid": 75,
+      "def": 72,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111130-egypt",
+      "sourceName": "Egypt",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "algeria": {
+      "ovr": 75,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1688,
+      "eloRank": 45,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "ghana": {
+      "ovr": 75,
+      "att": 68,
+      "mid": 76,
+      "def": 73,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111462-ghana",
+      "sourceName": "Ghana",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "cape-verde": {
+      "ovr": 72,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1521,
+      "eloRank": 77,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "south-africa": {
+      "ovr": 73,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1593,
+      "eloRank": 64,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "cote-divoire": {
+      "ovr": 76,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1719,
+      "eloRank": 39,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "senegal": {
+      "ovr": 77,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1812,
+      "eloRank": 23,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "dr-congo": {
+      "ovr": 75,
+      "att": 77,
+      "mid": 73,
+      "def": 74,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111545-congo-dr",
+      "sourceName": "Congo DR",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "japan": {
+      "ovr": 77,
+      "att": 78,
+      "mid": 78,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1411-japan",
+      "sourceName": "Japan",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "iran": {
+      "ovr": 76,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1743,
+      "eloRank": 33,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "uzbekistan": {
+      "ovr": 74,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1646,
+      "eloRank": 57,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "south-korea": {
+      "ovr": 76,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1723,
+      "eloRank": 36,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "jordan": {
+      "ovr": 74,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1644,
+      "eloRank": 58,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "australia": {
+      "ovr": 72,
+      "att": 71,
+      "mid": 69,
+      "def": 72,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1415-australia",
+      "sourceName": "Australia",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "qatar": {
+      "ovr": 69,
+      "att": 74,
+      "mid": 67,
+      "def": 66,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111527-qatar",
+      "sourceName": "Qatar",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "saudi-arabia": {
+      "ovr": 72,
+      "att": 73,
+      "mid": 73,
+      "def": 72,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111114-saudi-arabia",
+      "sourceName": "Saudi Arabia",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "iraq": {
+      "ovr": 72,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1539,
+      "eloRank": 74,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "new-zealand": {
+      "ovr": 70,
+      "att": 74,
+      "mid": 71,
+      "def": 69,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/111473-new-zealand",
+      "sourceName": "New Zealand",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "england": {
+      "ovr": 84,
+      "att": 85,
+      "mid": 86,
+      "def": 84,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1318-england",
+      "sourceName": "England",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "france": {
+      "ovr": 86,
+      "att": 87,
+      "mid": 85,
+      "def": 85,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1335-france",
+      "sourceName": "France",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "croatia": {
+      "ovr": 80,
+      "att": 81,
+      "mid": 79,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1328-croatia",
+      "sourceName": "Croatia",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "portugal": {
+      "ovr": 84,
+      "att": 83,
+      "mid": 86,
+      "def": 84,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1354-portugal",
+      "sourceName": "Portugal",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "norway": {
+      "ovr": 79,
+      "att": 80,
+      "mid": 81,
+      "def": 76,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1352-norway",
+      "sourceName": "Norway",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "germany": {
+      "ovr": 84,
+      "att": 83,
+      "mid": 84,
+      "def": 85,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1337-germany",
+      "sourceName": "Germany",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "netherlands": {
+      "ovr": 82,
+      "att": 80,
+      "mid": 83,
+      "def": 82,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/105035-netherlands",
+      "sourceName": "Netherlands",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "belgium": {
+      "ovr": 81,
+      "att": 82,
+      "mid": 82,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1325-belgium",
+      "sourceName": "Belgium",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "spain": {
+      "ovr": 86,
+      "att": 86,
+      "mid": 86,
+      "def": 84,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1362-spain",
+      "sourceName": "Spain",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "switzerland": {
+      "ovr": 79,
+      "att": 77,
+      "mid": 78,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1364-switzerland",
+      "sourceName": "Switzerland",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "austria": {
+      "ovr": 78,
+      "att": 76,
+      "mid": 78,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1322-austria-national-team",
+      "sourceName": "Austria (National team)",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "scotland": {
+      "ovr": 76,
+      "att": 77,
+      "mid": 77,
+      "def": 75,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1359-scotland",
+      "sourceName": "Scotland",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "bosnia-and-herzegovina": {
+      "ovr": 75,
+      "att": null,
+      "mid": null,
+      "def": null,
+      "source": "elo-mapped",
+      "sourceUrl": "https://eloratings.net/World.tsv",
+      "elo": 1672,
+      "eloRank": 48,
+      "fetchedAt": "2026-11-18T09:17:44.521Z"
+    },
+    "czechia": {
+      "ovr": 76,
+      "att": 75,
+      "mid": 75,
+      "def": 76,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1330-czechia",
+      "sourceName": "Czechia",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "sweden": {
+      "ovr": 78,
+      "att": 83,
+      "mid": 75,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1363-sweden",
+      "sourceName": "Sweden",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "turkiye": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 81,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1365-turkiye",
+      "sourceName": "Türkiye",
+      "fetchedAt": "2026-11-18T09:18:32.010Z"
+    },
+    "arsenal": {
+      "ovr": 85,
+      "att": 83,
+      "mid": 85,
+      "def": 83,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1-arsenal",
+      "sourceName": "Arsenal",
+      "fetchedAt": "2026-11-18T09:18:33.721Z"
+    },
+    "manchester-city": {
+      "ovr": 84,
+      "att": 87,
+      "mid": 84,
+      "def": 84,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/10-manchester-city",
+      "sourceName": "Manchester City",
+      "fetchedAt": "2026-11-18T09:23:53.743Z"
+    },
+    "manchester-united": {
+      "ovr": 82,
+      "att": 83,
+      "mid": 83,
+      "def": 80,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/11-manchester-united",
+      "sourceName": "Manchester United",
+      "fetchedAt": "2026-11-18T09:23:55.637Z"
+    },
+    "aston-villa": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 78,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/2-aston-villa",
+      "sourceName": "Aston Villa",
+      "fetchedAt": "2026-11-18T09:18:37.797Z"
+    },
+    "liverpool": {
+      "ovr": 83,
+      "att": 85,
+      "mid": 83,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/9-liverpool",
+      "sourceName": "Liverpool",
+      "fetchedAt": "2026-11-18T09:18:39.657Z"
+    },
+    "barcelona": {
+      "ovr": 85,
+      "att": 86,
+      "mid": 85,
+      "def": 83,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/241-fc-barcelona",
+      "sourceName": "FC Barcelona",
+      "fetchedAt": "2026-11-18T09:23:57.478Z"
+    },
+    "real-madrid": {
+      "ovr": 85,
+      "att": 86,
+      "mid": 86,
+      "def": 83,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/243-real-madrid",
+      "sourceName": "Real Madrid",
+      "fetchedAt": "2026-11-18T09:18:43.746Z"
+    },
+    "villarreal": {
+      "ovr": 79,
+      "att": 80,
+      "mid": 79,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/483-villarreal-cf",
+      "sourceName": "Villarreal CF",
+      "fetchedAt": "2026-11-18T09:23:59.400Z"
+    },
+    "atletico-madrid": {
+      "ovr": 83,
+      "att": 84,
+      "mid": 83,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/240-atletico-de-madrid",
+      "sourceName": "Atlético de Madrid",
+      "fetchedAt": "2026-11-18T09:24:01.423Z"
+    },
+    "real-betis": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 80,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/449-real-betis-balompie",
+      "sourceName": "Real Betis Balompié",
+      "fetchedAt": "2026-11-18T09:24:03.423Z"
+    },
+    "paris-saint-germain": {
+      "ovr": 85,
+      "att": 87,
+      "mid": 85,
+      "def": 86,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/73-paris-saint-germain",
+      "sourceName": "Paris Saint-Germain",
+      "fetchedAt": "2026-11-18T09:24:05.474Z"
+    },
+    "lens": {
+      "ovr": 76,
+      "att": 78,
+      "mid": 75,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/64-rc-lens",
+      "sourceName": "RC Lens",
+      "fetchedAt": "2026-11-18T09:24:07.429Z"
+    },
+    "lille": {
+      "ovr": 76,
+      "att": 77,
+      "mid": 76,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/65-losc-lille",
+      "sourceName": "LOSC Lille",
+      "fetchedAt": "2026-11-18T09:24:09.465Z"
+    },
+    "lyon": {
+      "ovr": 77,
+      "att": 75,
+      "mid": 77,
+      "def": 76,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/66-olympique-lyonnais",
+      "sourceName": "Olympique Lyonnais",
+      "fetchedAt": "2026-11-18T09:24:11.427Z"
+    },
+    "marseille": {
+      "ovr": 76,
+      "att": 77,
+      "mid": 76,
+      "def": 76,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/219-olympique-de-marseille",
+      "sourceName": "Olympique de Marseille",
+      "fetchedAt": "2026-11-18T09:24:13.486Z"
+    },
+    "bayern-munich": {
+      "ovr": 84,
+      "att": 90,
+      "mid": 84,
+      "def": 84,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/21-bayern-munchen",
+      "sourceName": "Bayern München",
+      "fetchedAt": "2026-11-18T09:24:15.499Z"
+    },
+    "borussia-dortmund": {
+      "ovr": 81,
+      "att": 85,
+      "mid": 80,
+      "def": 80,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/22-borussia-dortmund",
+      "sourceName": "Borussia Dortmund",
+      "fetchedAt": "2026-11-18T09:24:17.440Z"
+    },
+    "rb-leipzig": {
+      "ovr": 79,
+      "att": 78,
+      "mid": 78,
+      "def": 80,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/112172-rb-leipzig",
+      "sourceName": "RB Leipzig",
+      "fetchedAt": "2026-11-18T09:24:19.471Z"
+    },
+    "vfb-stuttgart": {
+      "ovr": 78,
+      "att": 77,
+      "mid": 79,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/36-vfb-stuttgart",
+      "sourceName": "VfB Stuttgart",
+      "fetchedAt": "2026-11-18T09:24:21.579Z"
+    },
+    "hoffenheim": {
+      "ovr": 77,
+      "att": 77,
+      "mid": 77,
+      "def": 76,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/10029-tsg-1899-hoffenheim",
+      "sourceName": "TSG 1899 Hoffenheim",
+      "fetchedAt": "2026-11-18T09:24:23.532Z"
+    },
+    "inter": {
+      "ovr": 82,
+      "att": 83,
+      "mid": 83,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/131682-inter",
+      "sourceName": "Inter",
+      "fetchedAt": "2026-11-18T09:19:11.803Z"
+    },
+    "napoli": {
+      "ovr": 81,
+      "att": 79,
+      "mid": 83,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/48-napoli",
+      "sourceName": "Napoli",
+      "fetchedAt": "2026-11-18T09:19:13.828Z"
+    },
+    "roma": {
+      "ovr": 80,
+      "att": 83,
+      "mid": 78,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/52-roma",
+      "sourceName": "Roma",
+      "fetchedAt": "2026-11-18T09:19:15.836Z"
+    },
+    "como": {
+      "ovr": 78,
+      "att": 80,
+      "mid": 78,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/1745-como",
+      "sourceName": "Como",
+      "fetchedAt": "2026-11-18T09:19:17.792Z"
+    },
+    "ac-milan": {
+      "ovr": 80,
+      "att": 80,
+      "mid": 79,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/131681-milano-fc",
+      "sourceName": "Milano FC",
+      "fetchedAt": "2026-11-18T09:24:25.470Z"
+    },
+    "tottenham-hotspur": {
+      "ovr": 81,
+      "att": 80,
+      "mid": 80,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/18-tottenham-hotspur",
+      "sourceName": "Tottenham Hotspur",
+      "fetchedAt": "2026-11-18T09:24:27.469Z"
+    },
+    "chelsea": {
+      "ovr": 81,
+      "att": 81,
+      "mid": 82,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/5-chelsea",
+      "sourceName": "Chelsea",
+      "fetchedAt": "2026-11-18T09:19:23.804Z"
+    },
+    "sporting-cp": {
+      "ovr": 77,
+      "att": 79,
+      "mid": 75,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/237-sporting-cp",
+      "sourceName": "Sporting CP",
+      "fetchedAt": "2026-11-18T09:24:29.564Z"
+    },
+    "newcastle-united": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 78,
+      "def": 81,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/13-newcastle-united",
+      "sourceName": "Newcastle United",
+      "fetchedAt": "2026-11-18T09:24:31.485Z"
+    },
+    "juventus": {
+      "ovr": 80,
+      "att": 78,
+      "mid": 78,
+      "def": 80,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/45-juventus",
+      "sourceName": "Juventus",
+      "fetchedAt": "2026-11-18T09:19:29.949Z"
+    },
+    "atalanta": {
+      "ovr": 79,
+      "att": 79,
+      "mid": 78,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/115845-atalanta",
+      "sourceName": "Atalanta",
+      "fetchedAt": "2026-11-18T09:19:31.836Z"
+    },
+    "bayer-leverkusen": {
+      "ovr": 79,
+      "att": 80,
+      "mid": 79,
+      "def": 79,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/32-bayer-04-leverkusen",
+      "sourceName": "Bayer 04 Leverkusen",
+      "fetchedAt": "2026-11-18T09:24:33.537Z"
+    },
+    "olympiacos": {
+      "ovr": 77,
+      "att": 80,
+      "mid": 77,
+      "def": 74,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/280-olympiacos",
+      "sourceName": "Olympiacos",
+      "fetchedAt": "2026-11-18T09:24:35.190Z"
+    },
+    "club-brugge": {
+      "ovr": 74,
+      "att": 74,
+      "mid": 71,
+      "def": 72,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/231-club-brugge",
+      "sourceName": "Club Brugge",
+      "fetchedAt": "2026-11-18T09:24:37.493Z"
+    },
+    "galatasaray": {
+      "ovr": 79,
+      "att": 85,
+      "mid": 79,
+      "def": 78,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/325-galatasaray",
+      "sourceName": "Galatasaray",
+      "fetchedAt": "2026-11-18T09:19:39.885Z"
+    },
+    "monaco": {
+      "ovr": 77,
+      "att": 75,
+      "mid": 77,
+      "def": 75,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/69-as-monaco",
+      "sourceName": "AS Monaco",
+      "fetchedAt": "2026-11-18T09:24:39.475Z"
+    },
+    "benfica": {
+      "ovr": 78,
+      "att": 80,
+      "mid": 79,
+      "def": 77,
+      "source": "fifaindex-fc27",
+      "sourceUrl": "https://fifaindex.com/teams/234-benfica",
+      "sourceName": "Benfica",
+      "fetchedAt": "2026-11-18T09:19:44.032Z"
+    }
+  }
+}

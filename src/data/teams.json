@@ -1,0 +1,1957 @@
+[
+  {
+    "id": "canada",
+    "name": "Canada",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "CAN",
+    "type": "national",
+    "region": "North America",
+    "country": "Canada",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ca",
+    "logo": null,
+    "colors": [
+      "#D80621",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "mexico",
+    "name": "Mexico",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "MEX",
+    "type": "national",
+    "region": "North America",
+    "country": "Mexico",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "mx",
+    "logo": null,
+    "colors": [
+      "#006847",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "united-states",
+    "name": "United States",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "USA",
+    "type": "national",
+    "region": "North America",
+    "country": "United States",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "us",
+    "logo": null,
+    "colors": [
+      "#0A3161",
+      "#BF0D3E"
+    ]
+  },
+  {
+    "id": "panama",
+    "name": "Panama",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "PAN",
+    "type": "national",
+    "region": "North America",
+    "country": "Panama",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "pa",
+    "logo": null,
+    "colors": [
+      "#DA121A",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "haiti",
+    "name": "Haiti",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "HAI",
+    "type": "national",
+    "region": "North America",
+    "country": "Haiti",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ht",
+    "logo": null,
+    "colors": [
+      "#00209F",
+      "#D21034"
+    ]
+  },
+  {
+    "id": "curacao",
+    "name": "Curaçao",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "CUW",
+    "type": "national",
+    "region": "North America",
+    "country": "Curaçao",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "cw",
+    "logo": null,
+    "colors": [
+      "#002B7F",
+      "#F9E814"
+    ]
+  },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "ARG",
+    "type": "national",
+    "region": "South America",
+    "country": "Argentina",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ar",
+    "logo": null,
+    "colors": [
+      "#75AADB",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "brazil",
+    "name": "Brazil",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "BRA",
+    "type": "national",
+    "region": "South America",
+    "country": "Brazil",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "br",
+    "logo": null,
+    "colors": [
+      "#FEDD00",
+      "#009C3B"
+    ]
+  },
+  {
+    "id": "ecuador",
+    "name": "Ecuador",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "ECU",
+    "type": "national",
+    "region": "South America",
+    "country": "Ecuador",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ec",
+    "logo": null,
+    "colors": [
+      "#FFDD00",
+      "#034EA2"
+    ]
+  },
+  {
+    "id": "uruguay",
+    "name": "Uruguay",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "URU",
+    "type": "national",
+    "region": "South America",
+    "country": "Uruguay",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "uy",
+    "logo": null,
+    "colors": [
+      "#5CBFEB",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "colombia",
+    "name": "Colombia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "COL",
+    "type": "national",
+    "region": "South America",
+    "country": "Colombia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "co",
+    "logo": null,
+    "colors": [
+      "#FCD116",
+      "#003893"
+    ]
+  },
+  {
+    "id": "paraguay",
+    "name": "Paraguay",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "PAR",
+    "type": "national",
+    "region": "South America",
+    "country": "Paraguay",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "py",
+    "logo": null,
+    "colors": [
+      "#D52B1E",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "morocco",
+    "name": "Morocco",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "MAR",
+    "type": "national",
+    "region": "Africa",
+    "country": "Morocco",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ma",
+    "logo": null,
+    "colors": [
+      "#C1272D",
+      "#006233"
+    ]
+  },
+  {
+    "id": "tunisia",
+    "name": "Tunisia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "TUN",
+    "type": "national",
+    "region": "Africa",
+    "country": "Tunisia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "tn",
+    "logo": null,
+    "colors": [
+      "#E70013",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "egypt",
+    "name": "Egypt",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "EGY",
+    "type": "national",
+    "region": "Africa",
+    "country": "Egypt",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "eg",
+    "logo": null,
+    "colors": [
+      "#CE1126",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "algeria",
+    "name": "Algeria",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "ALG",
+    "type": "national",
+    "region": "Africa",
+    "country": "Algeria",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "dz",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#006233"
+    ]
+  },
+  {
+    "id": "ghana",
+    "name": "Ghana",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "GHA",
+    "type": "national",
+    "region": "Africa",
+    "country": "Ghana",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "gh",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#006B3F"
+    ]
+  },
+  {
+    "id": "cape-verde",
+    "name": "Cape Verde",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "CPV",
+    "type": "national",
+    "region": "Africa",
+    "country": "Cape Verde",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "cv",
+    "logo": null,
+    "colors": [
+      "#003893",
+      "#CF2027"
+    ]
+  },
+  {
+    "id": "south-africa",
+    "name": "South Africa",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "RSA",
+    "type": "national",
+    "region": "Africa",
+    "country": "South Africa",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "za",
+    "logo": null,
+    "colors": [
+      "#FFB612",
+      "#007749"
+    ]
+  },
+  {
+    "id": "cote-divoire",
+    "name": "Côte d'Ivoire",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": "Ivory Coast",
+      "wikipedia": null
+    },
+    "shortName": "CIV",
+    "type": "national",
+    "region": "Africa",
+    "country": "Côte d'Ivoire",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ci",
+    "logo": null,
+    "colors": [
+      "#F77F00",
+      "#009E60"
+    ]
+  },
+  {
+    "id": "senegal",
+    "name": "Senegal",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "SEN",
+    "type": "national",
+    "region": "Africa",
+    "country": "Senegal",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "sn",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#00853F"
+    ]
+  },
+  {
+    "id": "dr-congo",
+    "name": "DR Congo",
+    "sourceAliases": {
+      "fifaindex": "Congo DR",
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "COD",
+    "type": "national",
+    "region": "Africa",
+    "country": "DR Congo",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "cd",
+    "logo": null,
+    "colors": [
+      "#007FFF",
+      "#CE1021"
+    ]
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "JPN",
+    "type": "national",
+    "region": "Asia",
+    "country": "Japan",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "jp",
+    "logo": null,
+    "colors": [
+      "#1B2A7B",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "IRN",
+    "type": "national",
+    "region": "Asia",
+    "country": "Iran",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ir",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#DA0000"
+    ]
+  },
+  {
+    "id": "uzbekistan",
+    "name": "Uzbekistan",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "UZB",
+    "type": "national",
+    "region": "Asia",
+    "country": "Uzbekistan",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "uz",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#0099B5"
+    ]
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "KOR",
+    "type": "national",
+    "region": "Asia",
+    "country": "South Korea",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "kr",
+    "logo": null,
+    "colors": [
+      "#C60C30",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "jordan",
+    "name": "Jordan",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "JOR",
+    "type": "national",
+    "region": "Asia",
+    "country": "Jordan",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "jo",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#CE1126"
+    ]
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "AUS",
+    "type": "national",
+    "region": "Asia",
+    "country": "Australia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "au",
+    "logo": null,
+    "colors": [
+      "#FFCD00",
+      "#00843D"
+    ]
+  },
+  {
+    "id": "qatar",
+    "name": "Qatar",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "QAT",
+    "type": "national",
+    "region": "Asia",
+    "country": "Qatar",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "qa",
+    "logo": null,
+    "colors": [
+      "#8A1538",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "saudi-arabia",
+    "name": "Saudi Arabia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "KSA",
+    "type": "national",
+    "region": "Asia",
+    "country": "Saudi Arabia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "sa",
+    "logo": null,
+    "colors": [
+      "#006C35",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "iraq",
+    "name": "Iraq",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "IRQ",
+    "type": "national",
+    "region": "Asia",
+    "country": "Iraq",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "iq",
+    "logo": null,
+    "colors": [
+      "#007A3D",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "new-zealand",
+    "name": "New Zealand",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "NZL",
+    "type": "national",
+    "region": "Oceania",
+    "country": "New Zealand",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "nz",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#000000"
+    ]
+  },
+  {
+    "id": "england",
+    "name": "England",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "ENG",
+    "type": "national",
+    "region": "Europe",
+    "country": "England",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "gb-eng",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#CE1124"
+    ]
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "FRA",
+    "type": "national",
+    "region": "Europe",
+    "country": "France",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "fr",
+    "logo": null,
+    "colors": [
+      "#002654",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "croatia",
+    "name": "Croatia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "CRO",
+    "type": "national",
+    "region": "Europe",
+    "country": "Croatia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "hr",
+    "logo": null,
+    "colors": [
+      "#FF0000",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "portugal",
+    "name": "Portugal",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "POR",
+    "type": "national",
+    "region": "Europe",
+    "country": "Portugal",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "pt",
+    "logo": null,
+    "colors": [
+      "#DA291C",
+      "#046A38"
+    ]
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "NOR",
+    "type": "national",
+    "region": "Europe",
+    "country": "Norway",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "no",
+    "logo": null,
+    "colors": [
+      "#BA0C2F",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "germany",
+    "name": "Germany",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "GER",
+    "type": "national",
+    "region": "Europe",
+    "country": "Germany",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#000000"
+    ]
+  },
+  {
+    "id": "netherlands",
+    "name": "Netherlands",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "NED",
+    "type": "national",
+    "region": "Europe",
+    "country": "Netherlands",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "nl",
+    "logo": null,
+    "colors": [
+      "#F36C21",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "belgium",
+    "name": "Belgium",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "BEL",
+    "type": "national",
+    "region": "Europe",
+    "country": "Belgium",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "be",
+    "logo": null,
+    "colors": [
+      "#E30613",
+      "#000000"
+    ]
+  },
+  {
+    "id": "spain",
+    "name": "Spain",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "ESP",
+    "type": "national",
+    "region": "Europe",
+    "country": "Spain",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "es",
+    "logo": null,
+    "colors": [
+      "#C60B1E",
+      "#FFC400"
+    ]
+  },
+  {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "SUI",
+    "type": "national",
+    "region": "Europe",
+    "country": "Switzerland",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ch",
+    "logo": null,
+    "colors": [
+      "#D52B1E",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "austria",
+    "name": "Austria",
+    "sourceAliases": {
+      "fifaindex": "Austria (National team)",
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "AUT",
+    "type": "national",
+    "region": "Europe",
+    "country": "Austria",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "at",
+    "logo": null,
+    "colors": [
+      "#ED2939",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "scotland",
+    "name": "Scotland",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "SCO",
+    "type": "national",
+    "region": "Europe",
+    "country": "Scotland",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "gb-sct",
+    "logo": null,
+    "colors": [
+      "#1A2D69",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "bosnia-and-herzegovina",
+    "name": "Bosnia and Herzegovina",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "BIH",
+    "type": "national",
+    "region": "Europe",
+    "country": "Bosnia and Herzegovina",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "ba",
+    "logo": null,
+    "colors": [
+      "#002395",
+      "#FECB00"
+    ]
+  },
+  {
+    "id": "czechia",
+    "name": "Czechia",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "CZE",
+    "type": "national",
+    "region": "Europe",
+    "country": "Czechia",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "cz",
+    "logo": null,
+    "colors": [
+      "#D7141A",
+      "#11457E"
+    ]
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": null
+    },
+    "shortName": "SWE",
+    "type": "national",
+    "region": "Europe",
+    "country": "Sweden",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "se",
+    "logo": null,
+    "colors": [
+      "#FECC02",
+      "#006AA7"
+    ]
+  },
+  {
+    "id": "turkiye",
+    "name": "Türkiye",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": "Turkey",
+      "wikipedia": null
+    },
+    "shortName": "TUR",
+    "type": "national",
+    "region": "Europe",
+    "country": "Türkiye",
+    "league": null,
+    "groups": [
+      "World Cup 2026"
+    ],
+    "flagIso": "tr",
+    "logo": null,
+    "colors": [
+      "#E30A17",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "arsenal",
+    "name": "Arsenal",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Arsenal F.C."
+    },
+    "shortName": "ARS",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Premier League top 5"
+    ],
+    "flagIso": "gb-eng",
+    "logo": "logos/arsenal.svg",
+    "colors": [
+      "#EF0107",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "manchester-city",
+    "name": "Manchester City",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Manchester City F.C."
+    },
+    "shortName": "MCI",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Premier League top 5"
+    ],
+    "flagIso": "gb-eng",
+    "logo": "logos/manchester-city.svg",
+    "colors": [
+      "#6CABDD",
+      "#1C2C5B"
+    ]
+  },
+  {
+    "id": "manchester-united",
+    "name": "Manchester United",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Manchester United F.C."
+    },
+    "shortName": "MUN",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Premier League top 5"
+    ],
+    "flagIso": "gb-eng",
+    "logo": "logos/manchester-united.svg",
+    "colors": [
+      "#DA291C",
+      "#FBE122"
+    ]
+  },
+  {
+    "id": "aston-villa",
+    "name": "Aston Villa",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Aston Villa F.C."
+    },
+    "shortName": "AVL",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Premier League top 5"
+    ],
+    "flagIso": "gb-eng",
+    "logo": "logos/aston-villa.svg",
+    "colors": [
+      "#670E36",
+      "#95BFE5"
+    ]
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Liverpool F.C."
+    },
+    "shortName": "LIV",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Premier League top 5"
+    ],
+    "flagIso": "gb-eng",
+    "logo": null,
+    "colors": [
+      "#C8102E",
+      "#00B2A9"
+    ]
+  },
+  {
+    "id": "barcelona",
+    "name": "Barcelona",
+    "sourceAliases": {
+      "fifaindex": "FC Barcelona",
+      "elo": null,
+      "wikipedia": "FC Barcelona"
+    },
+    "shortName": "BAR",
+    "type": "club",
+    "region": null,
+    "country": "Spain",
+    "league": "La Liga",
+    "groups": [
+      "La Liga top 5"
+    ],
+    "flagIso": "es",
+    "logo": null,
+    "colors": [
+      "#A50044",
+      "#004D98"
+    ]
+  },
+  {
+    "id": "real-madrid",
+    "name": "Real Madrid",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Real Madrid CF"
+    },
+    "shortName": "RMA",
+    "type": "club",
+    "region": null,
+    "country": "Spain",
+    "league": "La Liga",
+    "groups": [
+      "La Liga top 5"
+    ],
+    "flagIso": "es",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#FEBE10"
+    ]
+  },
+  {
+    "id": "villarreal",
+    "name": "Villarreal",
+    "sourceAliases": {
+      "fifaindex": "Villarreal CF",
+      "elo": null,
+      "wikipedia": "Villarreal CF"
+    },
+    "shortName": "VIL",
+    "type": "club",
+    "region": null,
+    "country": "Spain",
+    "league": "La Liga",
+    "groups": [
+      "La Liga top 5"
+    ],
+    "flagIso": "es",
+    "logo": null,
+    "colors": [
+      "#FFE667",
+      "#005187"
+    ]
+  },
+  {
+    "id": "atletico-madrid",
+    "name": "Atlético Madrid",
+    "sourceAliases": {
+      "fifaindex": "Atlético de Madrid",
+      "elo": null,
+      "wikipedia": "Atlético Madrid"
+    },
+    "shortName": "ATM",
+    "type": "club",
+    "region": null,
+    "country": "Spain",
+    "league": "La Liga",
+    "groups": [
+      "La Liga top 5"
+    ],
+    "flagIso": "es",
+    "logo": null,
+    "colors": [
+      "#CB3524",
+      "#272E61"
+    ]
+  },
+  {
+    "id": "real-betis",
+    "name": "Real Betis",
+    "sourceAliases": {
+      "fifaindex": "Real Betis Balompié",
+      "elo": null,
+      "wikipedia": "Real Betis"
+    },
+    "shortName": "BET",
+    "type": "club",
+    "region": null,
+    "country": "Spain",
+    "league": "La Liga",
+    "groups": [
+      "La Liga top 5"
+    ],
+    "flagIso": "es",
+    "logo": "logos/real-betis.webp",
+    "colors": [
+      "#00954C",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "paris-saint-germain",
+    "name": "Paris Saint-Germain",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Paris Saint-Germain FC"
+    },
+    "shortName": "PSG",
+    "type": "club",
+    "region": null,
+    "country": "France",
+    "league": "Ligue 1",
+    "groups": [
+      "Ligue 1 top 5"
+    ],
+    "flagIso": "fr",
+    "logo": "logos/paris-saint-germain.svg",
+    "colors": [
+      "#004170",
+      "#DA291C"
+    ]
+  },
+  {
+    "id": "lens",
+    "name": "Lens",
+    "sourceAliases": {
+      "fifaindex": "RC Lens",
+      "elo": null,
+      "wikipedia": "RC Lens"
+    },
+    "shortName": "RCL",
+    "type": "club",
+    "region": null,
+    "country": "France",
+    "league": "Ligue 1",
+    "groups": [
+      "Ligue 1 top 5"
+    ],
+    "flagIso": "fr",
+    "logo": "logos/lens.webp",
+    "colors": [
+      "#FFD100",
+      "#E30613"
+    ]
+  },
+  {
+    "id": "lille",
+    "name": "Lille",
+    "sourceAliases": {
+      "fifaindex": "LOSC Lille",
+      "elo": null,
+      "wikipedia": "Lille OSC"
+    },
+    "shortName": "LIL",
+    "type": "club",
+    "region": null,
+    "country": "France",
+    "league": "Ligue 1",
+    "groups": [
+      "Ligue 1 top 5"
+    ],
+    "flagIso": "fr",
+    "logo": null,
+    "colors": [
+      "#E01E13",
+      "#1B3A6B"
+    ]
+  },
+  {
+    "id": "lyon",
+    "name": "Lyon",
+    "sourceAliases": {
+      "fifaindex": "Olympique Lyonnais",
+      "elo": null,
+      "wikipedia": "Olympique Lyonnais"
+    },
+    "shortName": "OL",
+    "type": "club",
+    "region": null,
+    "country": "France",
+    "league": "Ligue 1",
+    "groups": [
+      "Ligue 1 top 5"
+    ],
+    "flagIso": "fr",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#DA001A"
+    ]
+  },
+  {
+    "id": "marseille",
+    "name": "Marseille",
+    "sourceAliases": {
+      "fifaindex": "Olympique de Marseille",
+      "elo": null,
+      "wikipedia": "Olympique de Marseille"
+    },
+    "shortName": "OM",
+    "type": "club",
+    "region": null,
+    "country": "France",
+    "league": "Ligue 1",
+    "groups": [
+      "Ligue 1 top 5"
+    ],
+    "flagIso": "fr",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#2FAEE0"
+    ]
+  },
+  {
+    "id": "bayern-munich",
+    "name": "Bayern Munich",
+    "sourceAliases": {
+      "fifaindex": "Bayern München",
+      "elo": null,
+      "wikipedia": "FC Bayern Munich"
+    },
+    "shortName": "FCB",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Bundesliga top 5"
+    ],
+    "flagIso": "de",
+    "logo": "logos/bayern-munich.svg",
+    "colors": [
+      "#DC052D",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "borussia-dortmund",
+    "name": "Borussia Dortmund",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Borussia Dortmund"
+    },
+    "shortName": "BVB",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Bundesliga top 5"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#FDE100",
+      "#000000"
+    ]
+  },
+  {
+    "id": "rb-leipzig",
+    "name": "RB Leipzig",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "RB Leipzig"
+    },
+    "shortName": "RBL",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Bundesliga top 5"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#DD0741"
+    ]
+  },
+  {
+    "id": "vfb-stuttgart",
+    "name": "VfB Stuttgart",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "VfB Stuttgart"
+    },
+    "shortName": "VFB",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Bundesliga top 5"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#E32219"
+    ]
+  },
+  {
+    "id": "hoffenheim",
+    "name": "Hoffenheim",
+    "sourceAliases": {
+      "fifaindex": "TSG 1899 Hoffenheim",
+      "elo": null,
+      "wikipedia": "TSG 1899 Hoffenheim"
+    },
+    "shortName": "TSG",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Bundesliga top 5"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#1961B5",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Inter Milan"
+    },
+    "shortName": "INT",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Serie A top 5"
+    ],
+    "flagIso": "it",
+    "logo": null,
+    "colors": [
+      "#0068A8",
+      "#000000"
+    ]
+  },
+  {
+    "id": "napoli",
+    "name": "Napoli",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "SSC Napoli"
+    },
+    "shortName": "NAP",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Serie A top 5"
+    ],
+    "flagIso": "it",
+    "logo": "logos/napoli.svg",
+    "colors": [
+      "#12A0D7",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "roma",
+    "name": "Roma",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "AS Roma"
+    },
+    "shortName": "ROM",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Serie A top 5"
+    ],
+    "flagIso": "it",
+    "logo": null,
+    "colors": [
+      "#8E1F2F",
+      "#F0BC42"
+    ]
+  },
+  {
+    "id": "como",
+    "name": "Como",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Como 1907"
+    },
+    "shortName": "COM",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Serie A top 5"
+    ],
+    "flagIso": "it",
+    "logo": null,
+    "colors": [
+      "#1F4E9B",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "ac-milan",
+    "name": "AC Milan",
+    "sourceAliases": {
+      "fifaindex": "Milano FC",
+      "elo": null,
+      "wikipedia": "AC Milan"
+    },
+    "shortName": "MIL",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Serie A top 5"
+    ],
+    "flagIso": "it",
+    "logo": null,
+    "colors": [
+      "#FB090B",
+      "#000000"
+    ]
+  },
+  {
+    "id": "tottenham-hotspur",
+    "name": "Tottenham Hotspur",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Tottenham Hotspur F.C."
+    },
+    "shortName": "TOT",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "gb-eng",
+    "logo": null,
+    "colors": [
+      "#FFFFFF",
+      "#132257"
+    ]
+  },
+  {
+    "id": "chelsea",
+    "name": "Chelsea",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Chelsea F.C."
+    },
+    "shortName": "CHE",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "gb-eng",
+    "logo": null,
+    "colors": [
+      "#034694",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "sporting-cp",
+    "name": "Sporting CP",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Sporting CP"
+    },
+    "shortName": "SCP",
+    "type": "club",
+    "region": null,
+    "country": "Portugal",
+    "league": "Primeira Liga",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "pt",
+    "logo": null,
+    "colors": [
+      "#008057",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "newcastle-united",
+    "name": "Newcastle United",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Newcastle United F.C."
+    },
+    "shortName": "NEW",
+    "type": "club",
+    "region": null,
+    "country": "England",
+    "league": "Premier League",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "gb-eng",
+    "logo": null,
+    "colors": [
+      "#241F20",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "juventus",
+    "name": "Juventus",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Juventus FC"
+    },
+    "shortName": "JUV",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "it",
+    "logo": "logos/juventus.svg",
+    "colors": [
+      "#000000",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "atalanta",
+    "name": "Atalanta",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Atalanta BC"
+    },
+    "shortName": "ATA",
+    "type": "club",
+    "region": null,
+    "country": "Italy",
+    "league": "Serie A",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "it",
+    "logo": null,
+    "colors": [
+      "#1E71B8",
+      "#000000"
+    ]
+  },
+  {
+    "id": "bayer-leverkusen",
+    "name": "Bayer Leverkusen",
+    "sourceAliases": {
+      "fifaindex": "Bayer 04 Leverkusen",
+      "elo": null,
+      "wikipedia": "Bayer 04 Leverkusen"
+    },
+    "shortName": "B04",
+    "type": "club",
+    "region": null,
+    "country": "Germany",
+    "league": "Bundesliga",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "de",
+    "logo": null,
+    "colors": [
+      "#E32221",
+      "#000000"
+    ]
+  },
+  {
+    "id": "olympiacos",
+    "name": "Olympiacos",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Olympiacos F.C."
+    },
+    "shortName": "OLY",
+    "type": "club",
+    "region": null,
+    "country": "Greece",
+    "league": "Super League Greece",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "gr",
+    "logo": null,
+    "colors": [
+      "#ED1C24",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "club-brugge",
+    "name": "Club Brugge",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Club Brugge KV"
+    },
+    "shortName": "BRU",
+    "type": "club",
+    "region": null,
+    "country": "Belgium",
+    "league": "Belgian Pro League",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "be",
+    "logo": null,
+    "colors": [
+      "#0067B1",
+      "#000000"
+    ]
+  },
+  {
+    "id": "galatasaray",
+    "name": "Galatasaray",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "Galatasaray S.K. (football)"
+    },
+    "shortName": "GAL",
+    "type": "club",
+    "region": null,
+    "country": "Türkiye",
+    "league": "Süper Lig",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "tr",
+    "logo": null,
+    "colors": [
+      "#A90432",
+      "#FDB912"
+    ]
+  },
+  {
+    "id": "monaco",
+    "name": "Monaco",
+    "sourceAliases": {
+      "fifaindex": "AS Monaco",
+      "elo": null,
+      "wikipedia": "AS Monaco FC"
+    },
+    "shortName": "ASM",
+    "type": "club",
+    "region": null,
+    "country": "Monaco",
+    "league": "Ligue 1",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "mc",
+    "logo": "logos/monaco.svg",
+    "colors": [
+      "#CE1126",
+      "#FFFFFF"
+    ]
+  },
+  {
+    "id": "benfica",
+    "name": "Benfica",
+    "sourceAliases": {
+      "fifaindex": null,
+      "elo": null,
+      "wikipedia": "S.L. Benfica"
+    },
+    "shortName": "SLB",
+    "type": "club",
+    "region": null,
+    "country": "Portugal",
+    "league": "Primeira Liga",
+    "groups": [
+      "Champions League knockout"
+    ],
+    "flagIso": "pt",
+    "logo": null,
+    "colors": [
+      "#E83030",
+      "#FFFFFF"
+    ]
+  }
+]
