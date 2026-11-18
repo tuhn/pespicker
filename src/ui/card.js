@@ -39,7 +39,8 @@ export function starsEl(stars) {
     else if (stars >= i - 0.5) parts.push(h('span', { style: { background: 'linear-gradient(90deg, var(--tier) 50%, rgba(168,185,176,0.3) 50%)', '-webkit-background-clip': 'text', 'background-clip': 'text', color: 'transparent' } }, '★'));
     else parts.push(h('span', { class: 'off' }, '★'));
   }
-  return h('span', { class: 'stars', role: 'img', 'aria-label': S.starsAria(formatStars(stars)) }, ...parts, h('span', { class: 'stars-num num', 'aria-hidden': 'true' }, formatStars(stars)));
+  // Visual stars only (no "2.5" label); the exact value stays available to screen readers.
+  return h('span', { class: 'stars', role: 'img', 'aria-label': S.starsAria(formatStars(stars)) }, ...parts);
 }
 
 /**

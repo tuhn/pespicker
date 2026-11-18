@@ -8,7 +8,6 @@
 // in crisp DOM text next to each card, so nothing important depends on texture sharpness alone.
 import { FLAGS, LOGOS } from 'virtual:assets';
 import { SHOW_CLUB_LOGOS } from '../config.js';
-import { formatStars } from '../draw/format.js';
 import { S } from '../ui/strings.js';
 
 export const CARD_W = 512;
@@ -182,21 +181,22 @@ export function drawFront(canvas, entry, side, name, images) {
   // stars
   const starY = 530;
   if (entry.stars != null) {
-    ctx.font = `48px ${FONT}`;
-    const step = 54;
-    const x0 = CARD_W / 2 - step * 2 - 40;
+    // Five glyphs, centred; half stars are clipped at the glyph's real width. No numeric label.
+    ctx.font = `56px ${FONT}`;
+    ctx.textAlign = 'center';
+    const step = 64;
+    const x0 = CARD_W / 2 - step * 2;
+    const gw = ctx.measureText('★').width;
     for (let i = 0; i < 5; i++) {
       const x = x0 + i * step;
       ctx.fillStyle = 'rgba(168,185,176,0.28)';
       ctx.fillText('★', x, starY);
       const fill = Math.max(0, Math.min(1, entry.stars - i));
       if (fill > 0) {
-        ctx.save(); ctx.beginPath(); ctx.rect(x - 30, starY - 50, 60 * fill, 60); ctx.clip();
+        ctx.save(); ctx.beginPath(); ctx.rect(x - gw / 2, starY - 60, gw * fill, 72); ctx.clip();
         ctx.fillStyle = tier; ctx.fillText('★', x, starY); ctx.restore();
       }
     }
-    ctx.font = `700 34px ${FONT}`; ctx.fillStyle = tier;
-    ctx.fillText(formatStars(entry.stars), x0 + 5 * step + 18, starY - 4);
   } else {
     ctx.font = `700 30px ${FONT}`; ctx.fillStyle = '#a8b9b0'; ctx.fillText(S.noStars, CARD_W / 2, starY);
   }

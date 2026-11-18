@@ -201,7 +201,6 @@ button { cursor: pointer; }
 .ovr .est { font-size: 11px; color: var(--cyan); margin-left: 3px; letter-spacing: 0.04em; }
 .stars { color: var(--tier); font-size: 15px; letter-spacing: 1px; white-space: nowrap; }
 .stars .off { color: rgba(168,185,176,0.3); }
-.stars-num { font-size: 12px; color: var(--muted); margin-left: 4px; }
 .sub-stats { display: flex; gap: 10px; font-size: 12px; color: var(--muted); }
 .sub-stats b { color: var(--text); font-size: 14px; margin-left: 2px; }
 
