@@ -158,7 +158,7 @@ Mục tiêu: lần đầu xem phải thấy "wow", nhưng chạy mượt trên m
   1. Beam trên đế sáng lên, card hiện dần từ dưới lên (scan-in dissolve) trong lúc đang úp mặt sau.
   2. Card xoay 1.5 vòng rồi dừng ở mặt trước (ease-out có overshoot nhẹ).
   3. Với đội 5★: flash vàng, một vòng sóng sáng lan trên mặt sân, burst hạt.
-  4. Card thu nhỏ và trượt về nửa màn hình của bên đó (Player 1 trên, Player 2 dưới trên màn hình dọc).
+  4. Card thu nhỏ và trượt về nửa màn hình của bên đó (Player 1 bên trái, Player 2 bên phải, hai card đứng cạnh nhau kể cả trên màn hình dọc, để cột trái/phải của thanh so sánh khớp với card).
 - Tương tác với card: kéo một ngón để nghiêng card, foil đổi màu theo góc nghiêng. Con quay hồi chuyển (gyroscope) chỉ là tuỳ chọn có nút bật, vì iOS bắt xin quyền. Mặc định dùng thao tác kéo.
 
 ### 3. VS Clash (cao trào, chạy một lần sau khi lật xong 2 card)
@@ -173,7 +173,7 @@ Mục tiêu: lần đầu xem phải thấy "wow", nhưng chạy mượt trên m
 
 ### Điều khiển
 - Chạm màn hình: tua nhanh bước hiện tại (x3 tốc độ). Nút "Skip": nhảy thẳng tới màn kết quả. Nút "Redraw".
-- Màn cuối: hai card đối diện qua chữ VS, kèm thanh so sánh, nút khoá trên mỗi card. Chạm vào một card để phóng to và nghiêng xem foil.
+- Màn cuối: hai card cạnh nhau (P1 trái, P2 phải); ngay dưới là hàng [Lock P1] [VS] [Lock P2], rồi thanh so sánh và dòng Gap. Không lặp lại thông tin đội ở panel DOM riêng (card 3D đã có đủ). Nền 3D vẫn chuyển động nhẹ (~30 fps). Chạm vào một card để phóng to và nghiêng xem foil.
 
 ### Ngân sách hiệu năng (bắt buộc)
 - Mục tiêu: 60 fps trên máy cao cấp, >= 50 fps trên Android tầm trung (vd Galaxy A54), p95 frame time <= 20ms. Không frame nào > 50ms trong suốt chuỗi animation.
