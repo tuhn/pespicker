@@ -2,7 +2,7 @@
 
 Web app bốc ngẫu nhiên đội bóng cho trận 1 vs 1 PES 2021 giữa 2 người chơi: chọn mode (National / Clubs / Mixed), chế độ cân bằng, bấm bốc, xem màn reveal 3D hologram rồi vào game chọn đúng đội. Toàn bộ app là một file `dist/index.html` chạy offline.
 
-Màn bốc 3D gồm 3 phần: **Holographic Stadium** (sân vận động hologram dựng lên từ đế chiếu), **3D Team Cards** (card lật 1.5 vòng, foil ánh cầu vồng đổi theo góc nghiêng), **VS Clash** (hai card lao vào nhau, sóng xung kích, chữ VS glitch, thanh so sánh). Màn kết quả: hai card đứng cạnh nhau (P1 trái, P2 phải) để cột trái/phải của thanh so sánh khớp với card, nút khoá và chữ VS nằm ngay dưới card, nền 3D vẫn chuyển động nhẹ. Máy không có WebGL, bật `prefers-reduced-motion` hoặc bật "Reduce effects" thì dùng bản 2D bằng CSS, logic bốc giữ nguyên.
+Màn bốc 3D gồm 3 phần: **Holographic Stadium** (sân vận động hologram dựng lên từ đế chiếu), **3D Team Cards** (card lật 1.5 vòng, foil ánh cầu vồng đổi theo góc nghiêng), **VS Clash** (hai card lao vào nhau, sóng xung kích, chữ VS glitch, thanh so sánh). Màn kết quả: hai card đứng cạnh nhau (P1 trái, P2 phải) để cột trái/phải của thanh so sánh khớp với card, nút khoá và chữ VS nằm ngay dưới card, nền 3D vẫn chuyển động nhẹ. Máy không có WebGL hoặc bật `prefers-reduced-motion` thì dùng bản 2D bằng CSS (ép bản 2D bằng `?no3d`), logic bốc giữ nguyên. Màn kết quả chỉ có: khoá từng bên, Redraw, History.
 
 | Card reveal | VS Clash | Kết quả |
 |---|---|---|
@@ -149,7 +149,8 @@ npm run build
 `npm run build` sinh thêm các file PWA cạnh `dist/index.html`: `manifest.webmanifest`, `sw.js` (service worker), `icons/` và `_headers` (quy tắc cache cho Cloudflare Pages). `index.html` vẫn chạy một mình qua `file://`; khi mở từ `file://` app không tải file PWA nào.
 
 - Chỉ cài được khi app chạy qua **https** (bản deploy `https://pespicker.tuhoang.app`). Địa chỉ LAN `http://192.168.x.x:5173` của `npm run dev` không cài được vì không phải https; dev server cũng không đăng ký service worker để khỏi phá live reload.
-- **Android (Chrome):** mở trang, bấm nút **Install app** ở góc trên màn Setup (hiện khi Chrome cho phép cài), hoặc menu ⋮ → *Install app* / *Add to Home screen*.
+- Màn Setup có link nhỏ **Install app** ngay dưới nút *Draw teams*, luôn hiện khi app chưa được cài (ẩn khi đã mở từ màn hình chính). Trình duyệt có prompt cài (Chrome/Edge) thì bấm là hiện prompt; không có (iPhone Safari, trình duyệt trong Zalo/Messenger, Samsung Internet, hoặc mở qua http) thì hiện hướng dẫn từng bước theo nền tảng.
+- **Android (Chrome):** bấm **Install app**, hoặc menu ⋮ → *Install app* / *Add to Home screen*.
 - **iPhone (Safari):** nút Share → *Add to Home Screen*.
 - Sau khi cài, app mở toàn màn hình và chạy offline (service worker cache `index.html` và icon). Có mạng thì app tự lấy bản deploy mới nhất ở lần mở tiếp theo.
 - Kiểm tra: `npm run build && npm run check:pwa` (Playwright: hỏi Chrome app có cài được không, chờ service worker nắm trang, tắt mạng rồi tải lại và bốc thử).
@@ -221,7 +222,7 @@ npm run check:pwa
 npm run check:pwa -- --url https://pespicker.tuhoang.app/
 ```
 
-Lệnh đầu kiểm tra bản `dist` cục bộ, lệnh sau kiểm tra bản live (cài được, service worker, mở offline, bốc offline). Với bản live: mở `https://pespicker.tuhoang.app` trên điện thoại, thấy nút **Install app** (Android) hoặc dùng Share → Add to Home Screen (iOS).
+Lệnh đầu kiểm tra bản `dist` cục bộ, lệnh sau kiểm tra bản live (cài được, service worker, mở offline, bốc offline). Với bản live: mở `https://pespicker.tuhoang.app` trên điện thoại, bấm **Install app** dưới nút Draw teams.
 
 ## 6. Cấu hình (`src/config.js`)
 
@@ -261,9 +262,9 @@ Tổng màn Draw (boot + 2 card + clash) mặc định khoảng 5.9s, nằm tron
 
 - **localStorage bị xoá / chế độ ẩn danh:** app vẫn chạy bằng state trong bộ nhớ, chỉ mất tên người chơi, tuỳ chọn và lịch sử. Không cần làm gì.
 - **Logo không hiện:** CLB có `logo: null` trong `teams.json` sẽ hiện badge chữ viết tắt. Chạy lại `npm run fetch:assets`, xem cột lỗi trong `ASSET_SOURCES.md`. Muốn tắt hẳn logo: `SHOW_CLUB_LOGOS = false`.
-- **fps thấp trên điện thoại:** mở app với `?debug=1` (vd `http://192.168.1.23:5173/?debug=1`) để xem HUD: fps, frame time, draw call, triangle, tier, DPR. App tự hạ tier (DPR 2 → 1.5 → 1, giảm số hạt) khi fps < 45 liên tục 1.5s và nhớ tier vào localStorage (`pespicker:tier`). Muốn ép tier: chạy `__scene.setTier('low')` trong console khi có `?debug=1`. Vẫn giật thì bật "Reduce effects" (dùng bản 2D).
+- **fps thấp trên điện thoại:** mở app với `?debug=1` (vd `http://192.168.1.23:5173/?debug=1`) để xem HUD: fps, frame time, draw call, triangle, tier, DPR. App tự hạ tier (DPR 2 → 1.5 → 1, giảm số hạt) khi fps < 45 liên tục 1.5s và nhớ tier vào localStorage (`pespicker:tier`). Muốn ép tier: chạy `__scene.setTier('low')` trong console khi có `?debug=1`. Vẫn giật thì mở với `?no3d` để dùng bản 2D.
 - **WebGL không chạy:** app tự chuyển sang bản 2D (CSS), không cần làm gì. Muốn thử bản 2D trên máy có WebGL: thêm `?no3d` vào URL. Mất WebGL giữa chừng (`webglcontextlost`) thì lượt đang chạy nhảy thẳng tới kết quả và các lượt sau dùng 2D cho tới khi context được khôi phục.
-- **Animation giật trên máy yếu:** bật "Reduce effects" ở màn Setup.
+- **Animation giật trên máy yếu:** mở `https://pespicker.tuhoang.app/?no3d` để dùng bản 2D.
 
 - **Deploy lỗi xác thực wrangler** (`Authentication error`, `Not logged in`, `code: 10000`): chạy `npx wrangler logout` rồi `npx wrangler login`, kiểm tra `npx wrangler whoami`. Có nhiều account thì đặt `CLOUDFLARE_ACCOUNT_ID=<Account ID>` trước lệnh deploy. Trên máy CI dùng API token (quyền *Cloudflare Pages: Edit*) qua biến `CLOUDFLARE_API_TOKEN`.
 - **`pages project create` báo "Missing entry-point to Worker script"**: thêm `--force` (xem mục 5).

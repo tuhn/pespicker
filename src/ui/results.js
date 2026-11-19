@@ -1,5 +1,5 @@
 // Match screen: two cards facing each other across VS, comparison bars, gap, and the result
-// controls (lock per side, swap, redraw, copy, share, history). The draw animation plays on
+// controls (lock per side, redraw, history). The draw animation plays on
 // this same layout, so "Skip" simply jumps to its final state.
 //
 // Two variants share the compare/dock builders:
@@ -45,18 +45,9 @@ function buildDock(ctx, locked) {
     return h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
       h('button', { type: 'button', class: 'btn', id: 'skip-btn', onclick: (e) => { e.stopPropagation(); actions.skip(); } }, S.skip)));
   }
+  // One clear action at the bottom; History lives in the top bar.
   const redrawDisabled = !canRedraw(locked);
-  const iconBtn = (icon, label, onclick, aria) => {
-    const b = h('button', { type: 'button', class: 'btn', onclick, 'aria-label': aria || null, html: icon });
-    if (label) b.append(label);
-    return b;
-  };
   return h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
-    h('div', { class: 'row' },
-      iconBtn(ICONS.swap, S.swap, actions.swap, S.swapAria),
-      iconBtn(ICONS.copy, S.copy, actions.copy),
-      ctx.canShare ? iconBtn(ICONS.share, S.share, actions.share) : null,
-      iconBtn(ICONS.history, null, actions.openHistory, S.history)),
     h('button', { type: 'button', class: 'btn-primary', id: 'redraw-btn', onclick: actions.redraw, disabled: redrawDisabled, 'aria-describedby': redrawDisabled ? 'redraw-why' : null },
       redrawDisabled ? S.redrawLockedBoth : S.redraw),
     redrawDisabled ? h('span', { id: 'redraw-why', class: 'sr-only' }, S.errors['both-locked']) : null));
@@ -65,13 +56,14 @@ function buildDock(ctx, locked) {
 function topBar(state, actions) {
   const back = h('button', { type: 'button', class: 'btn-ghost', onclick: actions.back, 'aria-label': S.backAria, html: ICONS.back });
   back.append(S.back);
-  return h('div', { class: 'match-top' }, back, h('div', { class: 'meta' }, `${S.modes[state.mode]} · ${S.balanceLabel(state.balance)}`));
+  const history = h('button', { type: 'button', class: 'icon-btn history-btn', onclick: actions.openHistory, 'aria-label': S.history, html: ICONS.history });
+  return h('div', { class: 'match-top' }, back, h('div', { class: 'meta' }, `${S.modes[state.mode]} · ${S.balanceLabel(state.balance)}`), history);
 }
 
 const speedHandler = (ctx) => (ctx.animating ? (e) => { if (!e.target.closest('button')) ctx.actions.speedUp(); } : null);
 
 /**
- * 2D variant. ctx: { state, entries, names, animating, animateSides, canShare, actions }
+ * 2D variant. ctx: { state, entries, names, animating, animateSides, actions }
  * Returns { el, anim } where anim holds the nodes the 2D sequence animates.
  */
 export function renderMatch(ctx) {

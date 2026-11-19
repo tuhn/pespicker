@@ -11,7 +11,6 @@ export function initialState() {
     players: ['', ''], // '' = use the default label ("Player 1" / "Player 2")
     allowMirror: false,
     balance: { ...DEFAULT_BALANCE },
-    reduceEffects: false,
     result: null, // { teams: [idP1, idP2], locked: [bool, bool], notice } (not persisted)
     history: [], // newest first: { at, mode, balance, players, teams }
   };
@@ -38,20 +37,12 @@ export function setBalance(s, balance) {
 }
 
 export const setAllowMirror = (s, on) => ({ ...s, allowMirror: !!on });
-export const setReduceEffects = (s, on) => ({ ...s, reduceEffects: !!on });
 
 export function toggleLock(s, side) {
   if (!s.result) return s;
   const locked = s.result.locked.slice();
   locked[side] = !locked[side];
   return { ...s, result: { ...s.result, locked } };
-}
-
-/** Swap the two drawn teams between players. A lock belongs to its team, so it moves too. */
-export function swapSides(s) {
-  if (!s.result) return s;
-  const { teams, locked } = s.result;
-  return { ...s, result: { ...s.result, teams: [teams[1], teams[0]], locked: [locked[1], locked[0]] } };
 }
 
 /** Store a successful drawMatch() result and log it to history. */
@@ -70,7 +61,7 @@ export const clearHistory = (s) => ({ ...s, history: [] });
 
 // ---------- persistence ----------
 
-const PERSISTED = ['mode', 'players', 'allowMirror', 'balance', 'reduceEffects', 'history'];
+const PERSISTED = ['mode', 'players', 'allowMirror', 'balance', 'history'];
 
 export function serialize(s) {
   return JSON.stringify(Object.fromEntries(PERSISTED.map((k) => [k, s[k]])));
@@ -86,7 +77,6 @@ export function deserialize(json) {
   if (POOL_MODES.includes(raw.mode)) s = { ...s, mode: raw.mode };
   if (Array.isArray(raw.players) && raw.players.length === 2) s = setPlayerName(setPlayerName(s, 0, raw.players[0]), 1, raw.players[1]);
   if (typeof raw.allowMirror === 'boolean') s = setAllowMirror(s, raw.allowMirror);
-  if (typeof raw.reduceEffects === 'boolean') s = setReduceEffects(s, raw.reduceEffects);
   if (raw.balance && typeof raw.balance === 'object') s = setBalance(s, raw.balance);
   if (Array.isArray(raw.history)) {
     const ok = raw.history.filter((h) => h && Array.isArray(h.teams) && h.teams.length === 2 && Number.isFinite(h.at));

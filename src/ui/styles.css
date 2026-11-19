@@ -314,3 +314,18 @@ table.scale td:nth-child(2), table.scale td:nth-child(3), table.scale th:nth-chi
 .install-link:active { color: var(--text); }
 
 .screen.setup { padding-bottom: calc(140px + var(--safe-b)); }
+
+/* ---------- clean-up pass ---------- */
+.match-top { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; }
+.match-top .meta { text-align: center; }
+.history-btn { position: relative; color: var(--muted); background: rgba(13,33,25,0.7); }
+.history-btn svg { width: 20px; height: 20px; }
+.history-btn .badge { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: var(--neon); color: var(--bg); font-size: 11px; font-weight: 700; line-height: 18px; text-align: center; }
+.panel-sep { height: 1px; background: var(--line); margin: 12px 0 2px; }
+.help .scale-line { margin: 0; }
+.steps { margin: 6px 0 10px; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; }
+.notice-box { margin: 6px 0; padding: 10px 12px; border-radius: 10px; background: rgba(92,242,255,0.08); border: 1px solid rgba(92,242,255,0.35); color: var(--text); font-size: 13px; }
+.match { padding-bottom: calc(100px + var(--safe-b)); }
+.screen.setup { padding-bottom: calc(132px + var(--safe-b)); }
+.install-link { min-height: 36px; color: var(--text); opacity: 0.8; }

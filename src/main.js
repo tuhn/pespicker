@@ -2,8 +2,8 @@
 //
 // Rendering paths for the Match screen:
 // - 3D: WebGL scene (src/scene) behind a DOM layer that holds text, locks and controls.
-// - 2D: CSS fallback (ui/fallback2d.js) when WebGL is missing or lost, prefers-reduced-motion is
-//   set, or "Reduce effects" is on. Draw logic is identical in both.
+// - 2D: CSS fallback (ui/fallback2d.js) when WebGL is missing or lost, or prefers-reduced-motion is
+//   set (or ?no3d). Draw logic is identical in both.
 // Three.js is initialised only after the 2D setup screen has painted.
 import teams from './data/teams.json';
 import ratingsFile from './data/ratings.json';
@@ -13,7 +13,7 @@ import { resolveRatings } from './draw/stars.js';
 import { buildPool, POOL_MODES } from './draw/pool.js';
 import { drawMatch } from './draw/draw.js';
 import { createCryptoRng, createSeededRng } from './draw/rng.js';
-import { formatMatch, playerName } from './draw/format.js';
+import { playerName } from './draw/format.js';
 import * as St from './state.js';
 import { h, clear } from './ui/dom.js';
 import { S } from './ui/strings.js';
@@ -21,6 +21,7 @@ import { renderSetup } from './ui/setup.js';
 import { renderMatch, renderMatch3D } from './ui/results.js';
 import { openHistory } from './ui/history.js';
 import { openStarScale, scaleSummary } from './ui/starScale.js';
+import { openInstallGuide } from './ui/installGuide.js';
 import { play2D, prefersReducedMotion } from './ui/fallback2d.js';
 import { createScene, hasWebGL } from './scene/index.js';
 
@@ -45,7 +46,7 @@ let zoomed = -1;
 
 const root = document.getElementById('app');
 const names = () => [0, 1].map((i) => playerName(state.players, i, S.defaultNames));
-const use3D = () => !!scene && !sceneFailed && !scene.lost && !state.reduceEffects && !prefersReducedMotion() && !params.has('no3d');
+const use3D = () => !!scene && !sceneFailed && !scene.lost && !prefersReducedMotion() && !params.has('no3d');
 
 function update(next, { render = true } = {}) {
   state = next;
@@ -59,14 +60,10 @@ const actions = {
   setName: (i, v) => update(St.setPlayerName(state, i, v), { render: false }),
   setBalance: (b) => update(St.setBalance(state, b)),
   setMirror: (on) => update(St.setAllowMirror(state, on)),
-  setReduce: (on) => update(St.setReduceEffects(state, on)),
   draw: () => runDraw(),
   redraw: () => runDraw(),
   back: () => { screen = 'setup'; draw(); },
-  swap: () => update(St.swapSides(state)),
   lock: (side) => update(St.toggleLock(state, side)),
-  copy: () => copyResult(),
-  share: () => shareResult(),
   openStarScale: () => openStarScale({ thresholds: STAR_THRESHOLDS, pool: pools[state.mode], mode: state.mode }),
   openHistory: () => openHistory({ history: state.history, teamName: (id) => byId.get(id)?.name || id, onClear: () => update(St.clearHistory(state)) }),
   skip: () => sequence?.skip(),
@@ -97,33 +94,6 @@ function runDraw() {
   update(St.applyDraw(state, res), { render: false });
   screen = 'match';
   draw({ animateSides: [!locked[0], !locked[1]], boot: fromSetup });
-}
-
-function currentText() {
-  return formatMatch(names(), state.result.teams.map(entryOf));
-}
-
-async function copyResult() {
-  const text = currentText();
-  try {
-    if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
-    else legacyCopy(text);
-    toast(S.copied, 'info');
-  } catch {
-    try { legacyCopy(text); toast(S.copied, 'info'); } catch { toast(S.copyFailed, 'error'); }
-  }
-}
-function legacyCopy(text) {
-  const ta = h('textarea', { style: { position: 'fixed', opacity: '0' } });
-  ta.value = text;
-  document.body.append(ta);
-  ta.select();
-  const ok = document.execCommand('copy');
-  ta.remove();
-  if (!ok) throw new Error('copy failed');
-}
-async function shareResult() {
-  try { await navigator.share({ title: S.appTitle, text: currentText() }); } catch { /* user cancelled */ }
 }
 
 // ---------- zoom (3D card inspect) ----------
@@ -175,12 +145,12 @@ function draw({ animateSides = null, boot = false } = {}) {
     screen = 'setup';
     document.body.classList.remove('mode3d');
     scene?.hide();
-    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS), installMode: installMode() }));
+    root.append(renderSetup({ state, poolStats, actions, scaleSummary: scaleSummary(STAR_THRESHOLDS), showInstall: showInstall() }));
     return;
   }
   const animating = !!animateSides;
   const entries = state.result.teams.map(entryOf);
-  const ctx = { state, entries, names: names(), animating, animateSides, canShare: typeof navigator.share === 'function', actions };
+  const ctx = { state, entries, names: names(), animating, animateSides, actions };
   window.scrollTo(0, 0);
 
   if (use3D()) {
@@ -221,7 +191,7 @@ function draw({ animateSides = null, boot = false } = {}) {
   const view = renderMatch(ctx);
   root.append(view.el);
   if (animating) {
-    const reduced = state.reduceEffects || prefersReducedMotion();
+    const reduced = prefersReducedMotion();
     sequence = play2D(view.anim, { animate: animateSides, fiveStar: entries.map((e) => e.stars === 5), reduced });
     sequence.finished.then(() => { sequence = null; draw(); });
   }
@@ -246,34 +216,29 @@ function initScene() {
 if (!__DEV__ && 'serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
 }
-// Android/Chrome: offer an "Install app" button when the browser says the app is installable.
+// "Install app": the browser's own prompt when it offers one (Chrome/Edge), otherwise a short guide
+// for the platform (iOS Safari has no prompt; in-app browsers, Samsung Internet or plain http neither).
 let installPrompt = null;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   installPrompt = e;
-  if (screen === 'setup') draw();
 });
 window.addEventListener('appinstalled', () => { installPrompt = null; if (screen === 'setup') draw(); });
 const isStandalone = () => {
   try { return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch { return false; }
 };
-// iPhone/iPad Safari has no install prompt: show the manual steps instead.
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-function installMode() {
-  if (isStandalone() || !/^https?:$/.test(location.protocol)) return null;
-  if (installPrompt) return 'prompt';
-  if (isIOS) return 'ios';
-  return null;
-}
+const isAndroid = /Android/i.test(navigator.userAgent);
+const showInstall = () => /^https?:$/.test(location.protocol) && !isStandalone();
 actions.install = async () => {
   if (installPrompt) {
-    installPrompt.prompt();
-    try { await installPrompt.userChoice; } catch { /* dismissed */ }
+    const p = installPrompt;
     installPrompt = null;
-    if (screen === 'setup') draw();
-  } else if (isIOS) {
-    toast(S.installIOS, 'info');
+    p.prompt();
+    try { await p.userChoice; } catch { /* dismissed */ }
+    return;
   }
+  openInstallGuide({ platform: isIOS ? 'ios' : isAndroid ? 'android' : 'desktop', secure: window.isSecureContext && location.protocol === 'https:' || location.hostname === 'localhost' });
 };
 
 draw();

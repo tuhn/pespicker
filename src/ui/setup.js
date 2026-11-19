@@ -1,12 +1,12 @@
-// Setup screen: pool mode, player names, balance, options, sticky "Draw teams".
+// Setup screen: pool mode, player names, balance (+ mirror switch), sticky "Draw teams" + install link.
 import { h, ICONS } from './dom.js';
 import { S } from './strings.js';
 import { POOL_MODES } from '../draw/pool.js';
 import { GAP_OPTIONS } from '../draw/draw.js';
 
 /**
- * ctx: { state, poolStats: { [mode]: { total, rated } }, actions: { setMode, setName, setBalance,
- *        setMirror, setReduce, draw, openHistory } }
+ * ctx: { state, poolStats: { [mode]: { total, rated } }, scaleSummary, showInstall,
+ *        actions: { setMode, setName, setBalance, setMirror, draw, openHistory, openStarScale, install } }
  */
 export function renderSetup(ctx) {
   const { state, poolStats, actions } = ctx;
@@ -45,16 +45,17 @@ export function renderSetup(ctx) {
       }, S.gapOption(g))))
     : null;
   const help = state.balance.mode === 'gap' ? S.balanceHelp.gap(state.balance.gap) : S.balanceHelp[state.balance.mode];
+  // Star scale only matters when stars are used to balance.
+  const helpLine = h('p', { class: 'help' }, help, state.balance.mode === 'free' ? null : h('span', { class: 'scale-line num' }, ` ${ctx.scaleSummary}`));
 
   const sw = (label, sub, on, fn) => h('button', { type: 'button', class: 'switch-row', role: 'switch', 'aria-checked': String(on), onclick: () => fn(!on) },
     h('span', null, h('b', null, label), h('small', null, sub)), h('span', { class: 'track', 'aria-hidden': 'true' }));
 
-  const historyBtn = h('button', { type: 'button', class: 'btn-ghost', onclick: actions.openHistory, 'aria-label': `${S.history} (${state.history.length})` },
-    h('span', { html: ICONS.history, style: { display: 'inline-flex', width: '18px' } }), S.history, h('span', { class: 'num' }, state.history.length ? `(${state.history.length})` : ''));
+  const historyBtn = h('button', { type: 'button', class: 'icon-btn history-btn', onclick: actions.openHistory, 'aria-label': `${S.history} (${state.history.length})`, html: ICONS.history });
+  if (state.history.length) historyBtn.append(h('span', { class: 'badge num', 'aria-hidden': 'true' }, state.history.length));
 
-  // Small footer action under "Draw teams": only when the app can be installed (Chrome prompt) or on
-  // iOS Safari (manual Add to Home Screen); hidden once running as an installed app.
-  const installBtn = ctx.installMode ? h('button', { type: 'button', class: 'install-link', onclick: actions.install, html: ICONS.download }) : null;
+  // Small footer action under "Draw teams", shown until the app runs installed (standalone).
+  const installBtn = ctx.showInstall ? h('button', { type: 'button', class: 'install-link', onclick: actions.install, html: ICONS.download }) : null;
   installBtn?.append(S.install);
 
   return h('main', { class: 'screen setup' },
@@ -69,11 +70,9 @@ export function renderSetup(ctx) {
       h('div', { class: 'panel-title' },
         h('h2', { id: 'balance-t', class: 'panel-title-text' }, S.balance),
         h('button', { type: 'button', class: 'link-btn', onclick: actions.openStarScale, 'aria-haspopup': 'dialog' }, S.scaleButton)),
-      balance, gapChips, h('p', { class: 'help' }, help),
-      h('p', { class: 'help scale-line num' }, ctx.scaleSummary)),
-    h('section', { class: 'panel', 'aria-label': S.options },
-      sw(S.allowMirror, S.allowMirrorHelp, state.allowMirror, actions.setMirror),
-      sw(S.reduceEffects, S.reduceEffectsHelp, state.reduceEffects, actions.setReduce)),
+      balance, gapChips, helpLine,
+      h('div', { class: 'panel-sep' }),
+      sw(S.allowMirror, S.allowMirrorHelp, state.allowMirror, actions.setMirror)),
     h('div', { class: 'dock' }, h('div', { class: 'dock-inner' },
       h('button', { type: 'button', class: 'btn-primary', id: 'draw-btn', onclick: actions.draw }, S.drawTeams),
       installBtn)));

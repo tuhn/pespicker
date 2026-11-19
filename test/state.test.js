@@ -1,10 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  initialState, setMode, toggleLock, swapSides, applyDraw, clearHistory, setBalance, setPlayerName,
+  initialState, setMode, toggleLock, applyDraw, clearHistory, setBalance, setPlayerName,
   serialize, deserialize, createPersistence,
 } from '../src/state.js';
-import { formatMatch, formatStars, playerName } from '../src/draw/format.js';
+import { formatStars, playerName } from '../src/draw/format.js';
 
 const drawn = (s, teams) => applyDraw(s, { ok: true, teams, notice: null }, 1000);
 
@@ -26,13 +26,6 @@ test('locks survive a redraw', () => {
   let s = toggleLock(drawn(initialState(), ['brazil', 'france']), 0);
   s = drawn(s, ['brazil', 'spain']);
   assert.deepEqual(s.result.locked, [true, false]);
-});
-
-test('swap moves teams and their locks', () => {
-  let s = toggleLock(drawn(initialState(), ['brazil', 'france']), 0);
-  s = swapSides(s);
-  assert.deepEqual(s.result.teams, ['france', 'brazil']);
-  assert.deepEqual(s.result.locked, [false, true]);
 });
 
 test('history keeps the 20 newest and can be cleared', () => {
@@ -78,11 +71,9 @@ test('throwing storage does not break the app', () => {
   assert.deepEqual(none.load(), initialState());
 });
 
-test('copy format', () => {
-  const e = (name, stars, ovr, estimated = false) => ({ team: { name }, stars, ovr, rating: { estimated } });
-  const names = [playerName(['Nam', ''], 0, ['Player 1', 'Player 2']), 'Minh'];
-  assert.equal(formatMatch(names, [e('Brazil', 4.5, 84), e('France', 5, 86)]), 'Nam (Brazil ★4.5 · OVR 84) vs Minh (France ★5 · OVR 86)');
-  assert.equal(formatMatch(['Player 1', 'Player 2'], [e('Haiti', 1.5, 72, true), e('X', null, null)]), 'Player 1 (Haiti ★1.5 · OVR 72 est.) vs Player 2 (X)');
+test('player names and star formatting', () => {
+  assert.equal(playerName(['Nam', ''], 0, ['Player 1', 'Player 2']), 'Nam');
   assert.equal(playerName(['  ', ''], 0, ['Player 1', 'Player 2']), 'Player 1');
   assert.equal(formatStars(5), '5');
+  assert.equal(formatStars(4.5), '4.5');
 });

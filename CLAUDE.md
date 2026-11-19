@@ -126,14 +126,14 @@ Nếu cả Playwright cũng bị chặn: dừng, báo lại, xuất `ratings_tem
 
 ## Tính năng
 - 3 mode pool: "National", "Clubs", "Mixed". Hiện số đội trong pool.
-- Luôn có đúng 2 người chơi. Tên tuỳ chọn, mặc định "Player 1" và "Player 2". Có nút đổi bên (swap) hai đội đã bốc.
+- Luôn có đúng 2 người chơi. Tên tuỳ chọn, mặc định "Player 1" và "Player 2". (Đã bỏ nút swap theo yêu cầu, 2026-11-19.)
 - Toggle "Allow mirror match" (mặc định tắt): bật thì hai người có thể bốc trùng đội.
 - Khoá đội của từng bên. Redraw chỉ bốc lại bên chưa khoá (vd giữ Brazil cho Player 1, bốc lại đối thủ). Khoá cả hai bên thì nút Redraw bị vô hiệu. Đổi mode thì xoá khoá.
 - Khi một bên bị khoá, chế độ cân bằng tính theo đội đã khoá.
 - Không tìm được đội thoả điều kiện (vd tier quá ít đội): báo lỗi rõ, không âm thầm bỏ điều kiện.
 - Sau khi bốc, hiện chênh lệch OVR giữa hai đội (vd "Gap: 3 OVR").
 - Lịch sử 20 lượt gần nhất (giờ, mode, chế độ cân bằng, "Team A vs Team B"). Có nút xoá.
-- Copy kết quả, định dạng: `Nam (Brazil ★4.5 · OVR 84) vs Minh (France ★5 · OVR 86)`. Có Web Share API nếu trình duyệt hỗ trợ.
+- Không có nút Copy / Share kết quả (đã bỏ theo yêu cầu, 2026-11-19, để màn kết quả gọn).
 - RNG: `crypto.getRandomValues` + Fisher-Yates.
 - Persist localStorage (bọc try/catch, lỗi thì chạy bằng state trong bộ nhớ): mode, tên 2 người, toggle, chế độ cân bằng, lịch sử.
 
@@ -186,7 +186,7 @@ Mục tiêu: lần đầu xem phải thấy "wow", nhưng chạy mượt trên m
 - Tier chất lượng high / medium / low: chọn ban đầu theo `devicePixelRatio`, `navigator.hardwareConcurrency` và benchmark ~1s lúc boot. Khi chạy, nếu fps < 45 liên tục 1.5s thì hạ tier (giảm DPR từ 2 về 1.5 rồi 1, giảm số hạt, tắt post-process). Tier ghi vào localStorage cho lần sau.
 - Chỉ render khi có animation hoặc tương tác. Dừng loop khi tab ẩn. Xử lý `webglcontextlost` / `restored`.
 - Khởi tạo Three.js sau khi UI 2D đã hiện.
-- Không có WebGL hoặc có `prefers-reduced-motion`: fallback 2D bằng CSS 3D (card lật, VS slide-in, thanh so sánh), logic bốc giữ nguyên. Thêm toggle "Reduce effects" trong Setup để ép dùng tier low hoặc fallback.
+- Không có WebGL hoặc có `prefers-reduced-motion`: fallback 2D bằng CSS 3D (card lật, VS slide-in, thanh so sánh), logic bốc giữ nguyên. Không có toggle "Reduce effects" trong Setup (đã bỏ theo yêu cầu, 2026-11-19); muốn ép bản 2D thì mở URL với `?no3d`.
 
 ### Đo và kiểm chứng
 - Thêm HUD debug bật bằng `?debug=1`: hiện fps, frame time, draw calls, triangles, tier hiện tại.
@@ -195,7 +195,7 @@ Mục tiêu: lần đầu xem phải thấy "wow", nhưng chạy mượt trên m
 
 ## UI/UX
 - Mobile-first, viewport 360 đến 430px. Tôn trọng safe-area inset. Nút "Draw teams" sticky ở đáy, trong vùng ngón cái.
-- Luồng 3 màn: Setup (mode, tên 2 người, chế độ cân bằng, mirror toggle) -> Draw (3D full screen) -> Results (2 card, chênh lệch OVR, khoá từng bên, swap, redraw, copy, share, history).
+- Luồng 3 màn: Setup (mode, tên 2 người, chế độ cân bằng, mirror toggle) -> Draw (3D full screen) -> Results (2 card, chênh lệch OVR, khoá từng bên, redraw, history). Setup có link nhỏ "Install app" dưới nút Draw teams, luôn hiện khi app chưa được cài: có prompt cài của trình duyệt thì mở prompt, không thì mở hướng dẫn theo nền tảng (iOS / Android / desktop).
 - Visual: dark theme nền xanh đêm (#07130f), panel #0d2119, chữ #f3fff8, chữ phụ #a8b9b0, accent neon #78ff9a, #c8ff53 và cyan hologram #5cf2ff, gradient accent cho nút chính. UI 2D dùng chung ngôn ngữ hologram với cảnh 3D (viền phát sáng mảnh, scanline rất nhẹ trên panel). Cảm giác sân bóng đêm và màn hình broadcast thể thao: vạch sân mờ trên nền, số dạng condensed và tabular-nums, card đội lấy cảm hứng từ thẻ game bóng đá.
 - Font: system stack, hoặc inline một webfont <= 60KB (subset Latin + Latin Extended).
 - Accessibility: control là button/input thật. aria-label tiếng Anh. Toggle dùng `role="switch"` + `aria-checked`. Tabs dùng `role="tab"` + `aria-selected`. Focus visible. Contrast đạt AA.
